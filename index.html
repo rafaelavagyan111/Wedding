@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Լուսինե & Պիտեր — 12·12·2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Tenor+Sans&family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&family=Great+Vibes&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Corinthia&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Montserrat:wght@300;400;500;700&family=Prata&display=swap" rel="stylesheet">
 <style>
 :root{
   --cream:#fdf6f0;
@@ -18,13 +18,19 @@
   --text:#2e1f1a;
   --muted:#7a5c52;
   --white:#ffffff;
+  
+  /* ── NEW FONTS ── */
+  --font-script: 'Corinthia', cursive;
+  --font-serif: 'Prata', serif;
+  --font-sans: 'Montserrat', sans-serif;
+  --font-body: 'Merriweather', serif;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;font-size:16px}
-body{background:var(--cream);color:var(--text);font-family:'Crimson Pro',serif;overflow-x:hidden}
+body{background:var(--cream);color:var(--text);font-family:var(--font-body);overflow-x:hidden}
 
-/* ── PIGEON CANVAS ── */
-#pigeon-canvas{
+/* ── REALISTIC PIGEON CANVAS ── */
+#realistic-pigeon-canvas{
   position:fixed;top:0;left:0;
   width:100%;height:100%;
   pointer-events:none;z-index:9999;
@@ -42,9 +48,9 @@ body{background:var(--cream);color:var(--text);font-family:'Crimson Pro',serif;o
 
 .hero-bg{
   position:absolute;inset:0;
-  background-image:url('https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=1600&q=85');
+  background-image:url('https://images.unsplash.com/photo-1596484552934-8c813735164f?w=2000&q=80'); /* Realistic landscape photo of Armenia */
   background-size:cover;
-  background-position:center 30%;
+  background-position:center 60%;
   transform:scale(1.04);
   animation:bgZoom 12s ease forwards;
 }
@@ -55,10 +61,10 @@ body{background:var(--cream);color:var(--text);font-family:'Crimson Pro',serif;o
   position:absolute;inset:0;
   background:
     linear-gradient(to bottom,
-      rgba(10,5,5,0.10) 0%,
-      rgba(10,5,5,0.05) 35%,
-      rgba(20,10,8,0.55) 65%,
-      rgba(20,10,8,0.82) 100%
+      rgba(10,5,5,0.15) 0%,
+      rgba(10,5,5,0.08) 35%,
+      rgba(20,10,8,0.60) 65%,
+      rgba(20,10,8,0.85) 100%
     );
 }
 
@@ -66,9 +72,9 @@ body{background:var(--cream);color:var(--text);font-family:'Crimson Pro',serif;o
 .hero-overlay::after{
   content:'';
   position:absolute;inset:0;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
   background-size:200px 200px;
-  pointer-events:none;opacity:.6;
+  pointer-events:none;opacity:.5;
 }
 
 .hero-content{
@@ -84,7 +90,7 @@ body{background:var(--cream);color:var(--text);font-family:'Crimson Pro',serif;o
 }
 
 .hero-eyebrow{
-  font-family:'Tenor Sans',sans-serif;
+  font-family:var(--font-sans);
   font-size:clamp(.62rem,.9vw,.78rem);
   letter-spacing:.45em;
   text-transform:uppercase;
@@ -94,29 +100,30 @@ body{background:var(--cream);color:var(--text);font-family:'Crimson Pro',serif;o
 }
 
 .hero-names{
-  font-family:'Great Vibes',cursive;
-  font-size:clamp(4rem,14vw,9rem);
+  font-family:var(--font-script);
+  font-size:clamp(4.5rem,15vw,10rem);
   color:#fff;
-  line-height:1;
-  text-shadow:0 4px 40px rgba(0,0,0,.4), 0 1px 0 rgba(255,255,255,.1);
+  line-height:0.85;
+  text-shadow:0 4px 40px rgba(0,0,0,.45), 0 1px 0 rgba(255,255,255,.1);
   letter-spacing:.01em;
+  margin-top: -1rem;
 }
 .hero-names .amp{
-  font-family:'Playfair Display',serif;
+  font-family:var(--font-serif);
   font-style:italic;
-  font-size:.55em;
+  font-size:.50em;
   color:var(--goldlight);
   display:block;
-  line-height:1.3;
+  line-height:1.2;
 }
 
 .hero-date{
-  font-family:'Playfair Display',serif;
+  font-family:var(--font-serif);
   font-style:italic;
   font-size:clamp(1rem,2.5vw,1.4rem);
   color:rgba(255,255,255,.75);
   letter-spacing:.12em;
-  margin:1rem 0 2rem;
+  margin:1.5rem 0 2rem;
 }
 
 /* ── Countdown ── */
@@ -125,24 +132,24 @@ body{background:var(--cream);color:var(--text);font-family:'Crimson Pro',serif;o
   gap:clamp(.6rem,2vw,2rem);
   align-items:flex-start;
   background:rgba(255,255,255,.08);
-  backdrop-filter:blur(12px);
-  border:1px solid rgba(255,255,255,.15);
-  border-radius:16px;
-  padding:.9rem clamp(1.2rem,4vw,2.5rem);
+  backdrop-filter:blur(15px);
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:20px;
+  padding:clamp(.9rem,2.5vw,1.2rem) clamp(1.2rem,4vw,2.8rem);
 }
 .cd-unit{display:flex;flex-direction:column;align-items:center;min-width:44px}
 .cd-num{
-  font-family:'Playfair Display',serif;
+  font-family:var(--font-serif);
   font-size:clamp(1.6rem,5vw,2.8rem);
   font-weight:500;color:#fff;
   line-height:1;
 }
 .cd-lbl{
-  font-family:'Tenor Sans',sans-serif;
+  font-family:var(--font-sans);
   font-size:.52rem;letter-spacing:.18em;
   text-transform:uppercase;
   color:rgba(255,255,255,.55);
-  margin-top:.2rem;
+  margin-top:.3rem;
 }
 .cd-dot{
   font-size:clamp(1.2rem,3vw,2rem);
@@ -159,7 +166,7 @@ body{background:var(--cream);color:var(--text);font-family:'Crimson Pro',serif;o
   animation-delay:2s;
 }
 .scroll-cue span{
-  font-family:'Tenor Sans',sans-serif;
+  font-family:var(--font-sans);
   font-size:.55rem;letter-spacing:.3em;
   text-transform:uppercase;color:rgba(255,255,255,.4);
 }
@@ -185,7 +192,7 @@ body{background:var(--cream);color:var(--text);font-family:'Crimson Pro',serif;o
 /* watermark letter */
 .section-watermark{
   position:absolute;
-  font-family:'Great Vibes',cursive;
+  font-family:var(--font-script);
   font-size:clamp(8rem,22vw,16rem);
   color:var(--blush);
   opacity:.18;
@@ -197,14 +204,14 @@ body{background:var(--cream);color:var(--text);font-family:'Crimson Pro',serif;o
 }
 
 .section-badge{
-  font-family:'Tenor Sans',sans-serif;
+  font-family:var(--font-sans);
   font-size:.6rem;letter-spacing:.4em;
   text-transform:uppercase;
   color:var(--gold);
   margin-bottom:.8rem;
 }
 .section-title{
-  font-family:'Playfair Display',serif;
+  font-family:var(--font-serif);
   font-size:clamp(1.7rem,5vw,2.6rem);
   font-weight:400;
   text-align:center;
@@ -212,7 +219,7 @@ body{background:var(--cream);color:var(--text);font-family:'Crimson Pro',serif;o
   margin-bottom:.3rem;
 }
 .section-time{
-  font-family:'Great Vibes',cursive;
+  font-family:var(--font-script);
   font-size:clamp(1.6rem,4vw,2.2rem);
   color:var(--rose);
   margin-bottom:2.5rem;
@@ -238,17 +245,22 @@ body{background:var(--cream);color:var(--text);font-family:'Crimson Pro',serif;o
 }
 .gold-rule-icon{
   color:var(--gold);font-size:1rem;
-  font-family:'Great Vibes',cursive;
+  font-family:var(--font-script);
   letter-spacing:.05em;
 }
 
-/* ══════════════ ILLUSTRATIONS ══════════════ */
+/* ══════════════ REALISTIC GRAPHICS ══════════════ */
 .illus-wrap{
   width:min(380px,90vw);
   margin:0 auto 2rem;
   filter:drop-shadow(0 12px 30px rgba(46,31,26,.12));
 }
-.illus-wrap svg{width:100%;height:auto;display:block}
+.illus-wrap img{
+  width:100%;height:auto;
+  display:block;
+  border-radius:15px; /* Subtle frame */
+  object-fit: cover;
+}
 
 /* ══════════════ RSVP ══════════════ */
 #rsvp{
@@ -260,13 +272,13 @@ body{background:var(--cream);color:var(--text);font-family:'Crimson Pro',serif;o
   text-align:center;
 }
 .rsvp-eyebrow{
-  font-family:'Tenor Sans',sans-serif;
+  font-family:var(--font-sans);
   font-size:.6rem;letter-spacing:.4em;
   text-transform:uppercase;color:var(--gold);
   margin-bottom:.7rem;
 }
 .rsvp-title{
-  font-family:'Playfair Display',serif;
+  font-family:var(--font-serif);
   font-size:clamp(1.8rem,5vw,2.8rem);
   font-style:italic;margin-bottom:.4rem;
 }
@@ -286,7 +298,7 @@ body{background:var(--cream);color:var(--text);font-family:'Crimson Pro',serif;o
 
 .field-label{
   display:block;
-  font-family:'Tenor Sans',sans-serif;
+  font-family:var(--font-sans);
   font-size:.62rem;letter-spacing:.25em;
   text-transform:uppercase;color:var(--rose);
   margin-bottom:.6rem;
@@ -297,7 +309,7 @@ body{background:var(--cream);color:var(--text);font-family:'Crimson Pro',serif;o
   border-bottom:1.5px solid rgba(201,133,122,.4);
   background:transparent;
   padding:.6rem 0;
-  font-family:'Crimson Pro',serif;
+  font-family:var(--font-body);
   font-size:1.1rem;color:var(--text);
   outline:none;
   transition:border-color .25s;
@@ -321,7 +333,7 @@ body{background:var(--cream);color:var(--text);font-family:'Crimson Pro',serif;o
   background:transparent;
   transition:all .25s;
   text-align:center;
-  font-family:'Crimson Pro',serif;
+  font-family:var(--font-body);
   color:var(--text);
 }
 .choice-btn:hover{
@@ -349,7 +361,7 @@ body{background:var(--cream);color:var(--text);font-family:'Crimson Pro',serif;o
   padding:1.1rem 2rem;
   background:linear-gradient(135deg,var(--rose),var(--deeprose));
   color:#fff;border:none;border-radius:50px;
-  font-family:'Tenor Sans',sans-serif;
+  font-family:var(--font-sans);
   font-size:.8rem;letter-spacing:.28em;
   text-transform:uppercase;
   cursor:pointer;
@@ -371,13 +383,13 @@ footer{
   padding:3rem 1.5rem;
 }
 .footer-names{
-  font-family:'Great Vibes',cursive;
-  font-size:clamp(2rem,6vw,3rem);
+  font-family:var(--font-script);
+  font-size:clamp(2.5rem,7vw,3.5rem);
   color:var(--goldlight);
   margin-bottom:.4rem;
 }
 .footer-date{
-  font-family:'Tenor Sans',sans-serif;
+  font-family:var(--font-sans);
   font-size:.65rem;letter-spacing:.4em;
   text-transform:uppercase;
   color:rgba(255,255,255,.3);
@@ -393,9 +405,8 @@ footer{
 </head>
 <body>
 
-<canvas id="pigeon-canvas"></canvas>
+<canvas id="realistic-pigeon-canvas"></canvas>
 
-<!-- ════════════════════ HERO ════════════════════ -->
 <section id="hero">
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
@@ -421,895 +432,117 @@ footer{
   </div>
 
   <div class="scroll-cue">
-    <span>ոlortел</span>
+    <span>ոլորտել</span>
     <div class="scroll-line"></div>
   </div>
 </section>
 
 
-<!-- ════════════════════ GIRL'S HOUSE ════════════════════ -->
 <section class="event-section" id="girls-house">
-  <span class="section-watermark">Հарс</span>
-  <p class="section-badge reveal">Քայл Առajin</p>
-  <h2 class="section-title reveal">Հарсi Тун</h2>
+  <span class="section-watermark">Հարս</span>
+  <p class="section-badge reveal">Քայլ Առաջին</p>
+  <h2 class="section-title reveal">Հարսի Տուն</h2>
   <p class="section-time reveal">12:00</p>
 
-  <!-- Realistic House SVG -->
   <div class="illus-wrap reveal">
-    <svg viewBox="0 0 500 380" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="sky1" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#c8dff0"/>
-          <stop offset="100%" stop-color="#e8f2f8"/>
-        </linearGradient>
-        <linearGradient id="grass" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#8cb87a"/>
-          <stop offset="100%" stop-color="#6a9a58"/>
-        </linearGradient>
-        <linearGradient id="wall1" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#f0e0d0"/>
-          <stop offset="100%" stop-color="#dccaba"/>
-        </linearGradient>
-        <linearGradient id="roof1" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#7a4838"/>
-          <stop offset="100%" stop-color="#5c3228"/>
-        </linearGradient>
-        <linearGradient id="door1" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#8b4513"/>
-          <stop offset="100%" stop-color="#5c2d0a"/>
-        </linearGradient>
-        <radialGradient id="sun1" cx="80%" cy="15%" r="25%">
-          <stop offset="0%" stop-color="#fff4c0" stop-opacity=".9"/>
-          <stop offset="100%" stop-color="transparent"/>
-        </radialGradient>
-        <filter id="softblur"><feGaussianBlur stdDeviation="1.2"/></filter>
-        <filter id="shadow1" x="-10%" y="-10%" width="120%" height="130%">
-          <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="rgba(0,0,0,.15)"/>
-        </filter>
-      </defs>
-
-      <!-- Sky -->
-      <rect width="500" height="380" fill="url(#sky1)"/>
-      <rect width="500" height="380" fill="url(#sun1)"/>
-
-      <!-- Clouds -->
-      <g opacity=".85">
-        <ellipse cx="80" cy="55" rx="38" ry="16" fill="white"/>
-        <ellipse cx="105" cy="48" rx="28" ry="14" fill="white"/>
-        <ellipse cx="58" cy="52" rx="22" ry="12" fill="white"/>
-      </g>
-      <g opacity=".7">
-        <ellipse cx="380" cy="65" rx="32" ry="14" fill="white"/>
-        <ellipse cx="402" cy="58" rx="24" ry="12" fill="white"/>
-        <ellipse cx="360" cy="63" rx="18" ry="10" fill="white"/>
-      </g>
-      <g opacity=".5">
-        <ellipse cx="240" cy="35" rx="26" ry="11" fill="white"/>
-        <ellipse cx="258" cy="30" rx="18" ry="9" fill="white"/>
-      </g>
-
-      <!-- Distant trees -->
-      <g opacity=".4" filter="url(#softblur)">
-        <rect x="30" y="200" width="8" height="50" fill="#5a7a4a"/>
-        <ellipse cx="34" cy="195" rx="18" ry="22" fill="#6a9a5a"/>
-        <rect x="450" y="195" width="8" height="55" fill="#5a7a4a"/>
-        <ellipse cx="454" cy="190" rx="20" ry="24" fill="#6a9a5a"/>
-        <rect x="420" y="205" width="6" height="45" fill="#5a7a4a"/>
-        <ellipse cx="423" cy="200" rx="14" ry="18" fill="#7aaa6a"/>
-      </g>
-
-      <!-- Ground -->
-      <rect x="0" y="290" width="500" height="90" fill="url(#grass)"/>
-      <!-- Shadow under house -->
-      <ellipse cx="250" cy="293" rx="155" ry="10" fill="rgba(0,0,0,.12)"/>
-
-      <!-- ── HOUSE BODY ── -->
-      <g filter="url(#shadow1)">
-        <!-- Main walls -->
-        <rect x="100" y="180" width="300" height="115" fill="url(#wall1)"/>
-
-        <!-- Roof -->
-        <polygon points="80,185 250,90 420,185" fill="url(#roof1)"/>
-        <!-- Roof shingle lines -->
-        <line x1="80" y1="185" x2="420" y2="185" stroke="#4a2818" stroke-width="2" opacity=".5"/>
-        <line x1="100" y1="168" x2="400" y2="168" stroke="#6a3828" stroke-width="1.2" opacity=".4"/>
-        <line x1="122" y1="151" x2="378" y2="151" stroke="#6a3828" stroke-width="1.2" opacity=".35"/>
-        <line x1="145" y1="134" x2="355" y2="134" stroke="#6a3828" stroke-width="1.2" opacity=".3"/>
-        <line x1="168" y1="117" x2="332" y2="117" stroke="#6a3828" stroke-width="1" opacity=".25"/>
-        <!-- Roof ridge -->
-        <line x1="80" y1="185" x2="250" y2="90" stroke="#3a1808" stroke-width="2.5" opacity=".5"/>
-        <line x1="250" y1="90" x2="420" y2="185" stroke="#3a1808" stroke-width="2.5" opacity=".5"/>
-
-        <!-- Chimney -->
-        <rect x="188" y="100" width="26" height="48" fill="#8a5848"/>
-        <rect x="185" y="98" width="32" height="7" fill="#6a3828" rx="1"/>
-        <!-- Smoke puffs -->
-        <ellipse cx="201" cy="90" rx="8" ry="7" fill="white" opacity=".3"/>
-        <ellipse cx="197" cy="81" rx="6" ry="6" fill="white" opacity=".2"/>
-        <ellipse cx="204" cy="73" rx="5" ry="5" fill="white" opacity=".12"/>
-
-        <!-- Wall brick texture subtle -->
-        <line x1="100" y1="205" x2="400" y2="205" stroke="rgba(0,0,0,.06)" stroke-width="1"/>
-        <line x1="100" y1="230" x2="400" y2="230" stroke="rgba(0,0,0,.06)" stroke-width="1"/>
-        <line x1="100" y1="255" x2="400" y2="255" stroke="rgba(0,0,0,.06)" stroke-width="1"/>
-
-        <!-- Left window -->
-        <rect x="120" y="200" width="75" height="60" fill="#b8d4e8" rx="2"/>
-        <rect x="120" y="200" width="75" height="60" fill="rgba(255,255,255,.15)" rx="2"/>
-        <!-- window frame -->
-        <rect x="118" y="198" width="79" height="64" fill="none" stroke="#c0a890" stroke-width="3" rx="2"/>
-        <!-- cross bars -->
-        <line x1="157" y1="198" x2="157" y2="262" stroke="#c0a890" stroke-width="2"/>
-        <line x1="118" y1="229" x2="197" y2="229" stroke="#c0a890" stroke-width="2"/>
-        <!-- window light reflection -->
-        <line x1="127" y1="205" x2="135" y2="225" stroke="white" stroke-width="1.5" opacity=".4"/>
-
-        <!-- Right window -->
-        <rect x="305" y="200" width="75" height="60" fill="#b8d4e8" rx="2"/>
-        <rect x="305" y="200" width="75" height="60" fill="rgba(255,255,255,.15)" rx="2"/>
-        <rect x="303" y="198" width="79" height="64" fill="none" stroke="#c0a890" stroke-width="3" rx="2"/>
-        <line x1="342" y1="198" x2="342" y2="262" stroke="#c0a890" stroke-width="2"/>
-        <line x1="303" y1="229" x2="382" y2="229" stroke="#c0a890" stroke-width="2"/>
-        <line x1="312" y1="205" x2="320" y2="225" stroke="white" stroke-width="1.5" opacity=".4"/>
-
-        <!-- Door -->
-        <path d="M213,295 L213,220 Q213,210 225,210 Q237,210 237,220 L237,295 Z" fill="none"/>
-        <rect x="213" y="220" width="74" height="75" fill="url(#door1)" rx="2"/>
-        <path d="M213,220 Q213,208 250,208 Q287,208 287,220" fill="#6a3210"/>
-        <!-- door panels -->
-        <rect x="219" y="226" width="28" height="22" fill="rgba(255,255,255,.07)" rx="2"/>
-        <rect x="253" y="226" width="28" height="22" fill="rgba(255,255,255,.07)" rx="2"/>
-        <rect x="219" y="255" width="28" height="28" fill="rgba(255,255,255,.07)" rx="2"/>
-        <rect x="253" y="255" width="28" height="28" fill="rgba(255,255,255,.07)" rx="2"/>
-        <!-- door knob -->
-        <circle cx="280" cy="259" r="4" fill="#c9a96e"/>
-        <circle cx="280" cy="259" r="2" fill="#a07830"/>
-        <!-- Door steps -->
-        <rect x="205" y="291" width="90" height="7" fill="#c8b8a8" rx="1"/>
-        <rect x="198" y="295" width="104" height="6" fill="#b8a898" rx="1"/>
-      </g>
-
-      <!-- Flower bushes left -->
-      <g>
-        <ellipse cx="108" cy="294" rx="22" ry="12" fill="#5a8a4a"/>
-        <ellipse cx="90" cy="290" rx="16" ry="10" fill="#6a9a5a"/>
-        <!-- flowers -->
-        <circle cx="98" cy="282" r="6" fill="#e88080" opacity=".9"/>
-        <circle cx="112" cy="280" r="5" fill="#e8a080" opacity=".9"/>
-        <circle cx="86" cy="284" r="5" fill="#f0c0a0" opacity=".9"/>
-        <circle cx="120" cy="285" r="4" fill="#d4a0a0" opacity=".9"/>
-        <!-- petals -->
-        <circle cx="98" cy="276" r="3" fill="#f0b0a0" opacity=".7"/>
-        <circle cx="104" cy="282" r="2.5" fill="#f0b0a0" opacity=".7"/>
-        <circle cx="92" cy="280" r="2.5" fill="#f0b0a0" opacity=".7"/>
-        <circle cx="98" cy="288" r="3" fill="#f0b0a0" opacity=".7"/>
-      </g>
-
-      <!-- Flower bushes right -->
-      <g>
-        <ellipse cx="392" cy="294" rx="22" ry="12" fill="#5a8a4a"/>
-        <ellipse cx="410" cy="290" rx="16" ry="10" fill="#6a9a5a"/>
-        <circle cx="400" cy="282" r="6" fill="#c898c8" opacity=".9"/>
-        <circle cx="386" cy="280" r="5" fill="#e8a080" opacity=".9"/>
-        <circle cx="413" cy="284" r="5" fill="#e88080" opacity=".9"/>
-        <circle cx="378" cy="285" r="4" fill="#d4a0d0" opacity=".9"/>
-        <circle cx="400" cy="276" r="3" fill="#d8b0d8" opacity=".7"/>
-        <circle cx="393" cy="282" r="2.5" fill="#d8b0d8" opacity=".7"/>
-        <circle cx="407" cy="282" r="2.5" fill="#d8b0d8" opacity=".7"/>
-      </g>
-
-      <!-- Path to door -->
-      <path d="M205,380 Q225,330 240,300 L260,300 Q270,330 295,380 Z" fill="#c8b8a0" opacity=".5"/>
-
-      <!-- Hanging heart decoration on door -->
-      <path d="M244,218 Q248,214 252,218 Q256,214 256,219 Q256,223 250,227 Q244,223 244,219Z" fill="#e88080" opacity=".7"/>
-
-      <!-- Bird on roof -->
-      <g transform="translate(300,120)" opacity=".6">
-        <ellipse cx="0" cy="0" rx="8" ry="5" fill="#4a3830" transform="rotate(-10)"/>
-        <ellipse cx="7" cy="-3" rx="5" ry="4" fill="#5a4840" transform="rotate(-10)"/>
-        <path d="M11,-3 L15,-2.5 L11,-1.5" fill="#c9a96e"/>
-        <circle cx="9" cy="-4.5" r="1.2" fill="#1a1210"/>
-        <path d="M-3,-2 Q-12,-14 -18,-8 Q-12,-4 -3,0" fill="#3a2820"/>
-      </g>
-    </svg>
+    <img src="https://images.unsplash.com/photo-1549413289-54316d311394?w=800&q=80" alt="Photorealistic detailed traditional Armenian house">
   </div>
 
   <div class="gold-rule reveal"><span class="gold-rule-icon">✦</span></div>
-  <p class="section-desc reveal">Ուրախությամб հравірум ем Ձез Лусiney и ظнolгантаl тum՝ меканаркел айс ха\u057f\u056f ak oрва тонакхмбутjoună:</p>
+  <p class="section-desc reveal">Ուրախությամբ հրավիրում եմ Ձեզ Լուսինեի և ծնողական տուն՝ մեկնարկելու այս հատուկ օրվա տոնախմբությունը:</p>
 </section>
 
 
-<!-- ════════════════════ CHURCH ════════════════════ -->
 <section class="event-section" id="church">
   <span class="section-watermark">Եկ</span>
-  <p class="section-badge reveal">Քայl Ерkрорт</p>
-  <h2 class="section-title reveal">Ñ\u0578\u0582\u0580\u0562 Ñ\u0561\u0580\u0563\u056b\u057d Ñ\u0587\u056f\u0587\u0572\u0587\u0581\u056b</h2>
+  <p class="section-badge reveal">Քայլ Երկրորդ</p>
+  <h2 class="section-title reveal">Սուրբ Սարգիս Եկեղեցի</h2>
   <p class="section-time reveal">14:00</p>
 
   <div class="illus-wrap reveal">
-    <svg viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="sky2" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#c0d8f0"/>
-          <stop offset="60%" stop-color="#ddeef8"/>
-          <stop offset="100%" stop-color="#eef5fc"/>
-        </linearGradient>
-        <linearGradient id="stonewall" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#d8ccc0"/>
-          <stop offset="100%" stop-color="#c0b4a8"/>
-        </linearGradient>
-        <linearGradient id="stonetower" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#ccc0b4"/>
-          <stop offset="100%" stop-color="#b4a89c"/>
-        </linearGradient>
-        <radialGradient id="halo" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="#fff8e0" stop-opacity=".6"/>
-          <stop offset="100%" stop-color="transparent"/>
-        </radialGradient>
-        <filter id="glow">
-          <feGaussianBlur stdDeviation="3" result="blur"/>
-          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-        </filter>
-      </defs>
-
-      <!-- Sky -->
-      <rect width="500" height="400" fill="url(#sky2)"/>
-
-      <!-- Sunrays behind cross -->
-      <g opacity=".25">
-        <line x1="250" y1="30" x2="250" y2="0" stroke="#fff8e0" stroke-width="2"/>
-        <line x1="250" y1="30" x2="290" y2="5" stroke="#fff8e0" stroke-width="1.5"/>
-        <line x1="250" y1="30" x2="210" y2="5" stroke="#fff8e0" stroke-width="1.5"/>
-        <line x1="250" y1="30" x2="320" y2="20" stroke="#fff8e0" stroke-width="1"/>
-        <line x1="250" y1="30" x2="180" y2="20" stroke="#fff8e0" stroke-width="1"/>
-      </g>
-
-      <!-- Clouds -->
-      <g opacity=".8">
-        <ellipse cx="70" cy="60" rx="40" ry="16" fill="white"/>
-        <ellipse cx="95" cy="52" rx="30" ry="14" fill="white"/>
-        <ellipse cx="48" cy="58" rx="24" ry="12" fill="white"/>
-      </g>
-      <g opacity=".6">
-        <ellipse cx="410" cy="70" rx="35" ry="14" fill="white"/>
-        <ellipse cx="432" cy="63" rx="26" ry="12" fill="white"/>
-      </g>
-
-      <!-- Background cypresses -->
-      <g opacity=".35">
-        <ellipse cx="60" cy="260" rx="12" ry="50" fill="#5a7850"/>
-        <ellipse cx="440" cy="255" rx="12" ry="52" fill="#5a7850"/>
-        <ellipse cx="80" cy="268" rx="9" ry="38" fill="#6a8860"/>
-        <ellipse cx="420" cy="262" rx="9" ry="40" fill="#6a8860"/>
-      </g>
-
-      <!-- Ground -->
-      <rect x="0" y="315" width="500" height="85" fill="#8aaa78"/>
-      <rect x="0" y="315" width="500" height="6" fill="#6a9a58"/>
-      <!-- Cobblestone path -->
-      <path d="M185,400 Q200,360 220,330 L280,330 Q300,360 315,400 Z" fill="#b8a898" opacity=".5"/>
-
-      <!-- Main church body -->
-      <rect x="100" y="220" width="300" height="100" fill="url(#stonewall)"/>
-      <!-- Stone courses -->
-      <g stroke="#b0a498" stroke-width=".8" opacity=".4">
-        <line x1="100" y1="240" x2="400" y2="240"/>
-        <line x1="100" y1="260" x2="400" y2="260"/>
-        <line x1="100" y1="280" x2="400" y2="280"/>
-        <line x1="100" y1="300" x2="400" y2="300"/>
-        <!-- vertical joints staggered -->
-        <line x1="125" y1="220" x2="125" y2="240"/>
-        <line x1="165" y1="220" x2="165" y2="240"/>
-        <line x1="210" y1="220" x2="210" y2="240"/>
-        <line x1="145" y1="240" x2="145" y2="260"/>
-        <line x1="195" y1="240" x2="195" y2="260"/>
-        <line x1="255" y1="240" x2="255" y2="260"/>
-        <line x1="310" y1="240" x2="310" y2="260"/>
-        <line x1="355" y1="240" x2="355" y2="260"/>
-      </g>
-
-      <!-- Nave roof -->
-      <polygon points="90,225 250,155 410,225" fill="#8a6050"/>
-      <line x1="90" y1="225" x2="410" y2="225" stroke="#6a4030" stroke-width="2"/>
-      <line x1="90" y1="225" x2="250" y2="155" stroke="#5a3020" stroke-width="2"/>
-      <line x1="250" y1="155" x2="410" y2="225" stroke="#5a3020" stroke-width="2"/>
-      <!-- roof tiles hint -->
-      <g stroke="#7a5040" stroke-width="1" opacity=".3">
-        <line x1="110" y1="218" x2="390" y2="218"/>
-        <line x1="130" y1="210" x2="370" y2="210"/>
-        <line x1="155" y1="200" x2="345" y2="200"/>
-        <line x1="180" y1="190" x2="320" y2="190"/>
-        <line x1="205" y1="178" x2="295" y2="178"/>
-        <line x1="228" y1="167" x2="272" y2="167"/>
-      </g>
-
-      <!-- Bell tower -->
-      <rect x="195" y="80" width="110" height="145" fill="url(#stonetower)"/>
-      <!-- Tower stone courses -->
-      <g stroke="#a89890" stroke-width=".7" opacity=".4">
-        <line x1="195" y1="100" x2="305" y2="100"/>
-        <line x1="195" y1="120" x2="305" y2="120"/>
-        <line x1="195" y1="140" x2="305" y2="140"/>
-        <line x1="195" y1="160" x2="305" y2="160"/>
-        <line x1="195" y1="180" x2="305" y2="180"/>
-        <line x1="195" y1="200" x2="305" y2="200"/>
-      </g>
-      <!-- Tower cap -->
-      <polygon points="183,85 250,42 317,85" fill="#7a5040"/>
-      <line x1="183" y1="85" x2="317" y2="85" stroke="#5a3020" stroke-width="2"/>
-
-      <!-- CROSS - gold, glowing -->
-      <g filter="url(#glow)">
-        <line x1="250" y1="26" x2="250" y2="50" stroke="#c9a96e" stroke-width="4" stroke-linecap="round"/>
-        <line x1="238" y1="34" x2="262" y2="34" stroke="#c9a96e" stroke-width="4" stroke-linecap="round"/>
-        <line x1="243" y1="41" x2="250" y2="39" stroke="#c9a96e" stroke-width="2.5" stroke-linecap="round"/>
-        <line x1="257" y1="41" x2="250" y2="39" stroke="#c9a96e" stroke-width="2.5" stroke-linecap="round"/>
-      </g>
-      <!-- Halo around cross -->
-      <circle cx="250" cy="38" r="24" fill="url(#halo)"/>
-
-      <!-- Bell tower arched window -->
-      <path d="M218,115 Q218,98 235,98 Q252,98 252,115 L252,140 L218,140 Z" fill="#b8ccd8" opacity=".8"/>
-      <rect x="218" y="115" width="34" height="25" fill="#b8ccd8" opacity=".8"/>
-      <path d="M248,115 Q248,98 265,98 Q282,98 282,115 L282,140 L248,140 Z" fill="#b8ccd8" opacity=".8"/>
-      <rect x="248" y="115" width="34" height="25" fill="#b8ccd8" opacity=".8"/>
-      <!-- arch outlines -->
-      <path d="M218,140 L218,115 Q218,96 235,96 Q252,96 252,115 L252,140" fill="none" stroke="#a09080" stroke-width="2"/>
-      <path d="M248,140 L248,115 Q248,96 265,96 Q282,96 282,115 L282,140" fill="none" stroke="#a09080" stroke-width="2"/>
-
-      <!-- Side arched windows -->
-      <g>
-        <!-- Left -->
-        <path d="M122,255 L122,240 Q122,228 133,228 Q144,228 144,240 L144,255 Z" fill="#b8ccd8" opacity=".85"/>
-        <path d="M122,255 L122,240 Q122,226 133,226 Q144,226 144,240 L144,255" fill="none" stroke="#a09080" stroke-width="2"/>
-        <!-- Right -->
-        <path d="M356,255 L356,240 Q356,228 367,228 Q378,228 378,240 L378,255 Z" fill="#b8ccd8" opacity=".85"/>
-        <path d="M356,255 L356,240 Q356,226 367,226 Q378,226 378,240 L378,255" fill="none" stroke="#a09080" stroke-width="2"/>
-        <!-- Middle left -->
-        <path d="M158,255 L158,238 Q158,225 171,225 Q184,225 184,238 L184,255 Z" fill="#b8ccd8" opacity=".85"/>
-        <path d="M158,255 L158,238 Q158,223 171,223 Q184,223 184,238 L184,255" fill="none" stroke="#a09080" stroke-width="2"/>
-        <!-- Middle right -->
-        <path d="M316,255 L316,238 Q316,225 329,225 Q342,225 342,238 L342,255 Z" fill="#b8ccd8" opacity=".85"/>
-        <path d="M316,255 L316,238 Q316,223 329,223 Q342,223 342,238 L342,255" fill="none" stroke="#a09080" stroke-width="2"/>
-      </g>
-
-      <!-- Main entrance arch -->
-      <path d="M207,320 L207,268 Q207,248 225,248 Q243,248 243,268 L243,320 Z" fill="#9a7850" opacity=".8"/>
-      <path d="M257,320 L257,268 Q257,248 275,248 Q293,248 293,268 L293,320 Z" fill="#9a7850" opacity=".8"/>
-      <rect x="207" y="268" width="86" height="52" fill="#9a7850" opacity=".8"/>
-      <!-- Arch outline -->
-      <path d="M207,320 L207,268 Q207,246 225,246 Q243,246 243,268 L243,295" fill="none" stroke="#7a5830" stroke-width="2.5"/>
-      <path d="M257,320 L257,268 Q257,246 275,246 Q293,246 293,268 L293,295" fill="none" stroke="#7a5830" stroke-width="2.5"/>
-      <!-- Center arch keystone -->
-      <ellipse cx="250" cy="247" rx="12" ry="8" fill="#c9a96e" opacity=".7"/>
-
-      <!-- Entrance steps -->
-      <rect x="195" y="314" width="110" height="7" fill="#b0a098" rx="1"/>
-      <rect x="188" y="319" width="124" height="7" fill="#a89890" rx="1"/>
-      <rect x="180" y="325" width="140" height="6" fill="#a09080" rx="1"/>
-
-      <!-- Warm light spill from door -->
-      <ellipse cx="250" cy="315" rx="35" ry="8" fill="#f8e0a0" opacity=".2"/>
-
-      <!-- Candles / lanterns flanking entrance -->
-      <g>
-        <line x1="195" y1="270" x2="195" y2="310" stroke="#8a7060" stroke-width="3"/>
-        <rect x="189" y="262" width="12" height="14" fill="#c8b898" rx="2"/>
-        <ellipse cx="195" cy="261" rx="4" ry="5" fill="#f8f0c8" opacity=".7"/>
-        <line x1="195" y1="255" x2="195" y2="260" stroke="#c9a96e" stroke-width="1.5"/><!-- flame wick -->
-        <ellipse cx="195" cy="253" rx="3" ry="5" fill="#f8a020" opacity=".6"/>
-      </g>
-      <g>
-        <line x1="305" y1="270" x2="305" y2="310" stroke="#8a7060" stroke-width="3"/>
-        <rect x="299" y="262" width="12" height="14" fill="#c8b898" rx="2"/>
-        <ellipse cx="305" cy="261" rx="4" ry="5" fill="#f8f0c8" opacity=".7"/>
-        <line x1="305" y1="255" x2="305" y2="260" stroke="#c9a96e" stroke-width="1.5"/>
-        <ellipse cx="305" cy="253" rx="3" ry="5" fill="#f8a020" opacity=".6"/>
-      </g>
-
-      <!-- Decorative rose vines on wall -->
-      <g opacity=".5">
-        <path d="M105,280 Q115,260 125,270 Q130,258 140,265" stroke="#8a5848" stroke-width="1.2" fill="none"/>
-        <circle cx="130" cy="258" r="5" fill="#e88080"/>
-        <circle cx="140" cy="265" r="4" fill="#f0a090"/>
-        <path d="M395,280 Q385,260 375,270 Q370,258 360,265" stroke="#8a5848" stroke-width="1.2" fill="none"/>
-        <circle cx="370" cy="258" r="5" fill="#e88080"/>
-        <circle cx="360" cy="265" r="4" fill="#f0a090"/>
-      </g>
-    </svg>
+    <img src="https://images.unsplash.com/photo-1596706797746-81c15c898c6b?w=800&q=80" alt="Photorealistic detailed Armenian Church">
   </div>
 
   <div class="gold-rule reveal"><span class="gold-rule-icon">✦</span></div>
-  <p class="section-desc reveal">Ñ\u054d\u0582\u0580\u0562 Ñ\u054a\u0561\u057f\u0561\u580\u0561\u0563 \u0587 Ñ\u0553\u057d\u0561\u056f \u056f\u0561\u057f\u0561\u580\u057e\u0587\u056c\u0578\u0582 \u0587\u576 Ñ\u054d\u0578\u0582\u580\u0562 Ñ\u054d\u0561\u580\u0563\u056b\u057d Ñ\u0587\u056f\u0587\u0572\u0587\u0581\u056b\u0578\u0582\u0574: Ñ\u0540\u580\u0561\u057e\u056b\u580\u0578\u0582\u0574 \u0587\u576 Ñ\u0541\u0587\u566 \u056f\u056b\u057d\u0587\u056c\u0578\u0582 \u0561\u575\u057d \u057d\u0578\u0582\u580\u0562 \u057a\u0561\u570\u0568:</p>
+  <p class="section-desc reveal">Սուրբ Պատարագ և Պսակ կատարվելու են Սուրբ Սարգիս եկեղեցում։ Հրավիրում ենք Ձեզ կիսելու այս սուրբ պահը:</p>
 </section>
 
 
-<!-- ════════════════════ BOY'S HOUSE ════════════════════ -->
 <section class="event-section" id="boys-house">
-  <span class="section-watermark">Փēs</span>
-  <p class="section-badge reveal">Քայl Ерkрорт</p>
-  <h2 class="section-title reveal">Ñ\u0553\u0587\u057d\u0561\u575\u056b Ñ\u054f\u0578\u0582\u576</h2>
+  <span class="section-watermark">Փեսա</span>
+  <p class="section-badge reveal">Քայլ Երրորդ</p>
+  <h2 class="section-title reveal">Փեսացուի Տուն</h2>
   <p class="section-time reveal">16:00</p>
 
   <div class="illus-wrap reveal">
-    <svg viewBox="0 0 500 380" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="sky3" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#b8d0e8"/>
-          <stop offset="100%" stop-color="#d8eaf5"/>
-        </linearGradient>
-        <linearGradient id="wall3" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#e8ddd0"/>
-          <stop offset="100%" stop-color="#d0c5b8"/>
-        </linearGradient>
-        <linearGradient id="roof3" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#606878"/>
-          <stop offset="100%" stop-color="#484e5c"/>
-        </linearGradient>
-      </defs>
-      <!-- Sky -->
-      <rect width="500" height="380" fill="url(#sky3)"/>
-      <!-- Evening glow hint -->
-      <ellipse cx="430" cy="80" rx="80" ry="60" fill="#f0c870" opacity=".15"/>
-
-      <!-- Clouds softer evening -->
-      <g opacity=".6">
-        <ellipse cx="90" cy="65" rx="35" ry="13" fill="white"/>
-        <ellipse cx="112" cy="58" rx="26" ry="12" fill="white"/>
-      </g>
-      <g opacity=".4">
-        <ellipse cx="350" cy="55" rx="30" ry="12" fill="#f8e8d8"/>
-        <ellipse cx="372" cy="49" rx="22" ry="10" fill="#f8e8d8"/>
-      </g>
-
-      <!-- Trees background -->
-      <g opacity=".35">
-        <rect x="32" y="210" width="10" height="60" fill="#4a6840"/>
-        <ellipse cx="37" cy="205" rx="22" ry="28" fill="#5a7a50"/>
-        <rect x="455" y="205" width="10" height="65" fill="#4a6840"/>
-        <ellipse cx="460" cy="200" rx="22" ry="28" fill="#5a7a50"/>
-        <rect x="430" y="215" width="8" height="55" fill="#4a6840"/>
-        <ellipse cx="434" cy="210" rx="16" ry="22" fill="#6a8a60"/>
-      </g>
-
-      <!-- Ground -->
-      <rect x="0" y="295" width="500" height="85" fill="#7a9a68"/>
-      <rect x="0" y="295" width="500" height="5" fill="#5a8a48"/>
-
-      <!-- Shadow -->
-      <ellipse cx="250" cy="298" rx="165" ry="9" fill="rgba(0,0,0,.1)"/>
-
-      <!-- House – wider, 2-storey feel -->
-      <rect x="75" y="175" width="350" height="125" fill="url(#wall3)"/>
-
-      <!-- Quoins (corner stones) -->
-      <g fill="#c0b4a8">
-        <rect x="75" y="175" width="18" height="12" rx="1"/>
-        <rect x="75" y="192" width="15" height="10" rx="1"/>
-        <rect x="75" y="207" width="18" height="12" rx="1"/>
-        <rect x="75" y="222" width="15" height="10" rx="1"/>
-        <rect x="75" y="237" width="18" height="12" rx="1"/>
-        <rect x="407" y="175" width="18" height="12" rx="1"/>
-        <rect x="410" y="192" width="15" height="10" rx="1"/>
-        <rect x="407" y="207" width="18" height="12" rx="1"/>
-        <rect x="410" y="222" width="15" height="10" rx="1"/>
-        <rect x="407" y="237" width="18" height="12" rx="1"/>
-      </g>
-
-      <!-- Roof -->
-      <polygon points="62,180 250,85 438,180" fill="url(#roof3)"/>
-      <!-- Roof details -->
-      <line x1="62" y1="180" x2="438" y2="180" stroke="#383e4c" stroke-width="3"/>
-      <line x1="62" y1="180" x2="250" y2="85" stroke="#282e3a" stroke-width="2.5"/>
-      <line x1="250" y1="85" x2="438" y2="180" stroke="#282e3a" stroke-width="2.5"/>
-      <!-- Roof shingles -->
-      <g stroke="#505868" stroke-width="1" opacity=".35">
-        <line x1="85" y1="172" x2="415" y2="172"/>
-        <line x1="108" y1="163" x2="392" y2="163"/>
-        <line x1="133" y1="152" x2="367" y2="152"/>
-        <line x1="158" y1="141" x2="342" y2="141"/>
-        <line x1="184" y1="128" x2="316" y2="128"/>
-        <line x1="210" y1="114" x2="290" y2="114"/>
-        <line x1="230" y1="101" x2="270" y2="101"/>
-      </g>
-
-      <!-- Dormer window -->
-      <g>
-        <polygon points="215,130 250,108 285,130" fill="#585e6a"/>
-        <rect x="228" y="118" width="44" height="22" fill="#a8c0d0" opacity=".8"/>
-        <rect x="226" y="116" width="48" height="24" fill="none" stroke="#888a98" stroke-width="2"/>
-        <line x1="250" y1="116" x2="250" y2="140" stroke="#888a98" stroke-width="1.5"/>
-      </g>
-
-      <!-- Two chimneys -->
-      <rect x="145" y="112" width="22" height="40" fill="#7a7080"/>
-      <rect x="142" y="110" width="28" height="5" fill="#6a6070" rx="1"/>
-      <rect x="330" y="110" width="22" height="42" fill="#7a7080"/>
-      <rect x="327" y="108" width="28" height="5" fill="#6a6070" rx="1"/>
-
-      <!-- Floor line -->
-      <line x1="75" y1="237" x2="425" y2="237" stroke="#c0b4a8" stroke-width="1.5" opacity=".4"/>
-      <!-- Horizontal band -->
-      <rect x="75" y="175" width="350" height="8" fill="#d8cdc0" opacity=".5"/>
-
-      <!-- Cornice -->
-      <rect x="68" y="175" width="364" height="8" fill="#c8bcb0"/>
-
-      <!-- 4 windows upper row -->
-      <g>
-        <!-- w1 -->
-        <rect x="90" y="188" width="52" height="40" fill="#90b8d0" opacity=".85" rx="1"/>
-        <path d="M90,198 Q90,186 116,186 Q142,186 142,198 L142,200 L90,200 Z" fill="#78a8c0" opacity=".8"/>
-        <rect x="88" y="184" width="56" height="46" fill="none" stroke="#b0a090" stroke-width="2.5" rx="1"/>
-        <line x1="116" y1="184" x2="116" y2="230" stroke="#b0a090" stroke-width="1.5"/>
-        <line x1="88" y1="208" x2="144" y2="208" stroke="#b0a090" stroke-width="1.5"/>
-        <line x1="97" y1="190" x2="104" y2="210" stroke="white" stroke-width="1" opacity=".35"/>
-        <!-- w2 -->
-        <rect x="170" y="188" width="52" height="40" fill="#90b8d0" opacity=".85" rx="1"/>
-        <path d="M170,198 Q170,186 196,186 Q222,186 222,198 L222,200 L170,200 Z" fill="#78a8c0" opacity=".8"/>
-        <rect x="168" y="184" width="56" height="46" fill="none" stroke="#b0a090" stroke-width="2.5" rx="1"/>
-        <line x1="196" y1="184" x2="196" y2="230" stroke="#b0a090" stroke-width="1.5"/>
-        <line x1="168" y1="208" x2="224" y2="208" stroke="#b0a090" stroke-width="1.5"/>
-        <!-- w3 -->
-        <rect x="278" y="188" width="52" height="40" fill="#90b8d0" opacity=".85" rx="1"/>
-        <path d="M278,198 Q278,186 304,186 Q330,186 330,198 L330,200 L278,200 Z" fill="#78a8c0" opacity=".8"/>
-        <rect x="276" y="184" width="56" height="46" fill="none" stroke="#b0a090" stroke-width="2.5" rx="1"/>
-        <line x1="304" y1="184" x2="304" y2="230" stroke="#b0a090" stroke-width="1.5"/>
-        <line x1="276" y1="208" x2="332" y2="208" stroke="#b0a090" stroke-width="1.5"/>
-        <!-- w4 -->
-        <rect x="358" y="188" width="52" height="40" fill="#90b8d0" opacity=".85" rx="1"/>
-        <path d="M358,198 Q358,186 384,186 Q410,186 410,198 L410,200 L358,200 Z" fill="#78a8c0" opacity=".8"/>
-        <rect x="356" y="184" width="56" height="46" fill="none" stroke="#b0a090" stroke-width="2.5" rx="1"/>
-        <line x1="384" y1="184" x2="384" y2="230" stroke="#b0a090" stroke-width="1.5"/>
-        <line x1="356" y1="208" x2="412" y2="208" stroke="#b0a090" stroke-width="1.5"/>
-      </g>
-
-      <!-- Lower windows -->
-      <g>
-        <rect x="90" y="246" width="80" height="55" fill="#90b8d0" opacity=".8" rx="1"/>
-        <rect x="88" y="244" width="84" height="59" fill="none" stroke="#b0a090" stroke-width="2.5" rx="1"/>
-        <line x1="130" y1="244" x2="130" y2="303" stroke="#b0a090" stroke-width="1.5"/>
-        <line x1="88" y1="274" x2="172" y2="274" stroke="#b0a090" stroke-width="1.5"/>
-        <line x1="99" y1="250" x2="108" y2="272" stroke="white" stroke-width="1.2" opacity=".3"/>
-
-        <rect x="330" y="246" width="80" height="55" fill="#90b8d0" opacity=".8" rx="1"/>
-        <rect x="328" y="244" width="84" height="59" fill="none" stroke="#b0a090" stroke-width="2.5" rx="1"/>
-        <line x1="370" y1="244" x2="370" y2="303" stroke="#b0a090" stroke-width="1.5"/>
-        <line x1="328" y1="274" x2="412" y2="274" stroke="#b0a090" stroke-width="1.5"/>
-      </g>
-
-      <!-- Double entrance door -->
-      <rect x="210" y="245" width="80" height="55" fill="#5a4030" rx="2"/>
-      <rect x="208" y="243" width="84" height="59" fill="none" stroke="#8a6040" stroke-width="3" rx="2"/>
-      <!-- door top arch line -->
-      <line x1="210" y1="256" x2="290" y2="256" stroke="#7a5030" stroke-width="1.5" opacity=".5"/>
-      <!-- panels -->
-      <rect x="215" y="248" width="32" height="18" fill="rgba(255,255,255,.06)" rx="2"/>
-      <rect x="253" y="248" width="32" height="18" fill="rgba(255,255,255,.06)" rx="2"/>
-      <rect x="215" y="270" width="32" height="24" fill="rgba(255,255,255,.06)" rx="2"/>
-      <rect x="253" y="270" width="32" height="24" fill="rgba(255,255,255,.06)" rx="2"/>
-      <!-- center seam -->
-      <line x1="250" y1="243" x2="250" y2="302" stroke="#7a5030" stroke-width="1.5" opacity=".6"/>
-      <!-- knobs -->
-      <circle cx="244" cy="270" r="4" fill="#c9a96e"/>
-      <circle cx="256" cy="270" r="4" fill="#c9a96e"/>
-      <!-- Fan light above -->
-      <path d="M210,244 Q250,228 290,244" fill="#a8c8d8" opacity=".5"/>
-      <line x1="250" y1="228" x2="250" y2="244" stroke="#8a6040" stroke-width="1.2" opacity=".5"/>
-      <line x1="230" y1="233" x2="228" y2="244" stroke="#8a6040" stroke-width="1" opacity=".4"/>
-      <line x1="270" y1="233" x2="272" y2="244" stroke="#8a6040" stroke-width="1" opacity=".4"/>
-
-      <!-- Steps -->
-      <rect x="200" y="297" width="100" height="7" fill="#c0b0a0" rx="1"/>
-      <rect x="192" y="302" width="116" height="6" fill="#b8a898" rx="1"/>
-      <rect x="184" y="307" width="132" height="6" fill="#b0a090" rx="1"/>
-
-      <!-- Garden fence pickets -->
-      <g stroke="#c8c0b0" stroke-width="1.5" opacity=".45">
-        <line x1="55" y1="290" x2="55" y2="315"/> <line x1="68" y1="287" x2="68" y2="315"/>
-        <line x1="81" y1="284" x2="81" y2="315"/> <line x1="94" y1="290" x2="94" y2="315"/>
-        <line x1="406" y1="290" x2="406" y2="315"/> <line x1="419" y1="287" x2="419" y2="315"/>
-        <line x1="432" y1="284" x2="432" y2="315"/> <line x1="445" y1="290" x2="445" y2="315"/>
-        <!-- horizontal rails -->
-        <line x1="52" y1="298" x2="97" y2="298"/>
-        <line x1="403" y1="298" x2="448" y2="298"/>
-      </g>
-
-      <!-- Potted flowers on steps -->
-      <g>
-        <rect x="188" y="302" width="12" height="10" fill="#c9a96e" opacity=".7" rx="1"/>
-        <ellipse cx="194" cy="301" rx="9" ry="5" fill="#5a8a4a"/>
-        <circle cx="190" cy="297" r="5" fill="#e8a080" opacity=".9"/>
-        <circle cx="198" cy="295" r="4" fill="#f0c0a0" opacity=".9"/>
-
-        <rect x="300" y="302" width="12" height="10" fill="#c9a96e" opacity=".7" rx="1"/>
-        <ellipse cx="306" cy="301" rx="9" ry="5" fill="#5a8a4a"/>
-        <circle cx="302" cy="297" r="5" fill="#d4a0d0" opacity=".9"/>
-        <circle cx="310" cy="295" r="4" fill="#e8a0c8" opacity=".9"/>
-      </g>
-    </svg>
+    <img src="https://images.unsplash.com/photo-1512401666353-8d042642a8b9?w=800&q=80" alt="Another photorealistic traditional Armenian house">
   </div>
 
   <div class="gold-rule reveal"><span class="gold-rule-icon">✦</span></div>
-  <p class="section-desc reveal">Ñ\u0540\u0561\u580\u057d\u056b \u570\u0565\u057f \u0574\u056b\u561\u057d\u576 \u056f\u056a\u561\u576\u0561\u576\u584 Ñ\u0553\u056b\u057f\u0565\u580\u056b \u056e\u576\u564\u0578\u580\u0561\u056f\u561\u576 \u057f\u0578\u0582\u576 \u22c5 \u056e\u576\u564\u0578\u580\u0576\u0587\u580\u056b \u585\u0561\u580\u056f\u0561\u576 \u0578\u580\u570\u576\u0578\u582\u569\u575\u0561\u576\u0568 \u057d\u057f\u561\u576\u561\u056c\u0578\u0582:</p>
+  <p class="section-desc reveal">Հարսի հետ միասին կգնանք Փիտերի ծնողական տուն` ծնողների հայրական օրհնությունը ստանալու:</p>
 </section>
 
 
-<!-- ════════════════════ RESTAURANT ════════════════════ -->
 <section class="event-section" id="restaurant">
-  <span class="section-watermark">Ужin</span>
-  <p class="section-badge reveal">Ñ\u0531\u057e\u561\u580\u057f</p>
-  <h2 class="section-title reveal">Ñ\u057c\u0565\u057d\u057f\u0578\u580\u561\u576 «Rhodens»</h2>
+  <span class="section-watermark">Ընթրիք</span>
+  <p class="section-badge reveal">Ավարտ</p>
+  <h2 class="section-title reveal">Ռեստորան «Rhodens»</h2>
   <p class="section-time reveal">18:00</p>
 
   <div class="illus-wrap reveal">
-    <svg viewBox="0 0 500 380" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="nightsky" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#1a2540"/>
-          <stop offset="60%" stop-color="#2c3c60"/>
-          <stop offset="100%" stop-color="#3a4a6a"/>
-        </linearGradient>
-        <linearGradient id="facade" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#2e2420"/>
-          <stop offset="100%" stop-color="#1e1810"/>
-        </linearGradient>
-        <linearGradient id="awning" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stop-color="#8a4838"/>
-          <stop offset="50%" stop-color="#c07060"/>
-          <stop offset="100%" stop-color="#8a4838"/>
-        </linearGradient>
-        <radialGradient id="warmglow" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="#f8e080" stop-opacity=".7"/>
-          <stop offset="100%" stop-color="#f09020" stop-opacity="0"/>
-        </radialGradient>
-        <radialGradient id="warmglow2" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="#f8e090" stop-opacity=".6"/>
-          <stop offset="100%" stop-color="transparent"/>
-        </radialGradient>
-        <filter id="glow2">
-          <feGaussianBlur stdDeviation="4" result="b"/>
-          <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-        </filter>
-      </defs>
-
-      <!-- Night sky -->
-      <rect width="500" height="380" fill="url(#nightsky)"/>
-
-      <!-- Stars -->
-      <g fill="white" opacity=".7">
-        <circle cx="30" cy="25" r="1.2"/><circle cx="75" cy="15" r=".9"/><circle cx="120" cy="35" r="1"/>
-        <circle cx="165" cy="18" r=".8"/><circle cx="220" cy="28" r="1.1"/><circle cx="285" cy="12" r=".9"/>
-        <circle cx="330" cy="32" r="1"/><circle cx="390" cy="20" r="1.2"/><circle cx="440" cy="38" r=".8"/>
-        <circle cx="460" cy="15" r="1"/><circle cx="55" cy="50" r=".7"/><circle cx="410" cy="55" r=".9"/>
-        <circle cx="145" cy="45" r=".7"/><circle cx="355" cy="48" r=".8"/>
-      </g>
-      <!-- Moon -->
-      <circle cx="420" cy="45" r="18" fill="#f8f0c8" opacity=".15"/>
-      <circle cx="428" cy="40" r="16" fill="url(#nightsky)" opacity=".7"/>
-
-      <!-- Ground / street -->
-      <rect x="0" y="295" width="500" height="85" fill="#181410"/>
-      <rect x="0" y="295" width="500" height="3" fill="#302820"/>
-      <!-- Wet street reflections -->
-      <rect x="50" y="300" width="180" height="4" fill="#f8e080" opacity=".05" rx="2"/>
-      <rect x="290" y="305" width="120" height="3" fill="#f8e080" opacity=".04" rx="2"/>
-
-      <!-- Building facade -->
-      <rect x="50" y="100" width="400" height="200" fill="url(#facade)"/>
-      <!-- Facade texture lines -->
-      <g stroke="#2a2018" stroke-width="1" opacity=".5">
-        <line x1="50" y1="130" x2="450" y2="130"/>
-        <line x1="50" y1="160" x2="450" y2="160"/>
-        <line x1="50" y1="190" x2="450" y2="190"/>
-        <line x1="50" y1="220" x2="450" y2="220"/>
-        <line x1="50" y1="250" x2="450" y2="250"/>
-        <line x1="50" y1="280" x2="450" y2="280"/>
-      </g>
-
-      <!-- Roofline parapet -->
-      <rect x="45" y="90" width="410" height="14" fill="#1a1410"/>
-      <!-- Parapet crenels -->
-      <g fill="#252018">
-        <rect x="55" y="80" width="28" height="14" rx="1"/>
-        <rect x="98" y="80" width="28" height="14" rx="1"/>
-        <rect x="141" y="80" width="28" height="14" rx="1"/>
-        <rect x="184" y="80" width="28" height="14" rx="1"/>
-        <rect x="227" y="80" width="28" height="14" rx="1"/>
-        <rect x="270" y="80" width="28" height="14" rx="1"/>
-        <rect x="313" y="80" width="28" height="14" rx="1"/>
-        <rect x="356" y="80" width="28" height="14" rx="1"/>
-        <rect x="399" y="80" width="28" height="14" rx="1"/>
-      </g>
-
-      <!-- SIGN – illuminated -->
-      <rect x="150" y="95" width="200" height="38" fill="#0e0c08" rx="4"/>
-      <rect x="153" y="98" width="194" height="32" fill="none" stroke="#c9a96e" stroke-width="1.5" rx="3"/>
-      <text x="250" y="120" font-family="Georgia,serif" font-size="17" fill="#e8d0a0" text-anchor="middle" font-style="italic" letter-spacing="3">Rhodens</text>
-      <!-- sign glow -->
-      <rect x="150" y="95" width="200" height="38" fill="url(#warmglow2)" rx="4" opacity=".3"/>
-
-      <!-- AWNING -->
-      <path d="M42,170 Q250,148 458,170 L458,185 Q250,165 42,185 Z" fill="url(#awning)"/>
-      <!-- Awning scallop edge -->
-      <g fill="#7a3828">
-        <ellipse cx="65" cy="186" rx="12" ry="7"/>
-        <ellipse cx="98" cy="186" rx="12" ry="7"/>
-        <ellipse cx="131" cy="186" rx="12" ry="7"/>
-        <ellipse cx="164" cy="185" rx="12" ry="7"/>
-        <ellipse cx="197" cy="185" rx="12" ry="7"/>
-        <ellipse cx="230" cy="185" rx="12" ry="7"/>
-        <ellipse cx="263" cy="185" rx="12" ry="7"/>
-        <ellipse cx="296" cy="185" rx="12" ry="7"/>
-        <ellipse cx="329" cy="185" rx="12" ry="7"/>
-        <ellipse cx="362" cy="186" rx="12" ry="7"/>
-        <ellipse cx="395" cy="186" rx="12" ry="7"/>
-        <ellipse cx="428" cy="186" rx="12" ry="7"/>
-      </g>
-      <!-- Awning drop curtain lines -->
-      <g stroke="#8a4838" stroke-width="1" opacity=".5">
-        <line x1="65" y1="170" x2="65" y2="192"/>
-        <line x1="98" y1="170" x2="98" y2="192"/>
-        <line x1="131" y1="170" x2="131" y2="190"/>
-        <line x1="164" y1="169" x2="164" y2="190"/>
-        <line x1="197" y1="168" x2="197" y2="190"/>
-        <line x1="250" y1="168" x2="250" y2="190"/>
-        <line x1="303" y1="168" x2="303" y2="190"/>
-        <line x1="336" y1="169" x2="336" y2="190"/>
-        <line x1="369" y1="169" x2="369" y2="192"/>
-        <line x1="402" y1="170" x2="402" y2="192"/>
-        <line x1="435" y1="170" x2="435" y2="192"/>
-      </g>
-
-      <!-- Warm glowing windows - 3 big -->
-      <!-- W left -->
-      <rect x="65" y="202" width="100" height="80" fill="#2a1e10" rx="2"/>
-      <rect x="68" y="205" width="94" height="74" fill="url(#warmglow)" rx="1"/>
-      <!-- curtain hints -->
-      <rect x="68" y="205" width="18" height="74" fill="#8a4828" opacity=".25"/>
-      <rect x="144" y="205" width="18" height="74" fill="#8a4828" opacity=".25"/>
-      <!-- silhouettes -->
-      <ellipse cx="95" cy="255" rx="10" ry="6" fill="#8a5828" opacity=".3"/>
-      <ellipse cx="125" cy="248" rx="9" ry="5" fill="#8a5828" opacity=".3"/>
-      <ellipse cx="112" cy="262" rx="8" ry="5" fill="#8a5828" opacity=".25"/>
-      <rect x="63" y="200" width="106" height="86" fill="none" stroke="#c9a96e" stroke-width="2" rx="2"/>
-      <line x1="116" y1="200" x2="116" y2="286" stroke="#c9a96e" stroke-width="1"/>
-      <!-- glow spill -->
-      <ellipse cx="115" cy="295" rx="40" ry="8" fill="#f8d060" opacity=".06"/>
-
-      <!-- W center -->
-      <rect x="200" y="202" width="100" height="80" fill="#2a1e10" rx="2"/>
-      <rect x="203" y="205" width="94" height="74" fill="url(#warmglow)" rx="1"/>
-      <rect x="203" y="205" width="18" height="74" fill="#8a4828" opacity=".25"/>
-      <rect x="279" y="205" width="18" height="74" fill="#8a4828" opacity=".25"/>
-      <ellipse cx="232" cy="250" rx="11" ry="6" fill="#8a5828" opacity=".3"/>
-      <ellipse cx="258" cy="258" rx="10" ry="5" fill="#8a5828" opacity=".3"/>
-      <ellipse cx="245" cy="265" rx="9" ry="5" fill="#8a5828" opacity=".25"/>
-      <rect x="198" y="200" width="106" height="86" fill="none" stroke="#c9a96e" stroke-width="2" rx="2"/>
-      <line x1="251" y1="200" x2="251" y2="286" stroke="#c9a96e" stroke-width="1"/>
-      <ellipse cx="250" cy="295" rx="40" ry="8" fill="#f8d060" opacity=".08"/>
-
-      <!-- W right -->
-      <rect x="335" y="202" width="100" height="80" fill="#2a1e10" rx="2"/>
-      <rect x="338" y="205" width="94" height="74" fill="url(#warmglow)" rx="1"/>
-      <rect x="338" y="205" width="18" height="74" fill="#8a4828" opacity=".25"/>
-      <rect x="414" y="205" width="18" height="74" fill="#8a4828" opacity=".25"/>
-      <ellipse cx="368" cy="252" rx="10" ry="6" fill="#8a5828" opacity=".3"/>
-      <ellipse cx="393" cy="245" rx="9" ry="5" fill="#8a5828" opacity=".3"/>
-      <rect x="333" y="200" width="106" height="86" fill="none" stroke="#c9a96e" stroke-width="2" rx="2"/>
-      <line x1="386" y1="200" x2="386" y2="286" stroke="#c9a96e" stroke-width="1"/>
-      <ellipse cx="385" cy="295" rx="40" ry="8" fill="#f8d060" opacity=".06"/>
-
-      <!-- Main entrance door -->
-      <rect x="212" y="255" width="76" height="45" fill="#0e0c08" rx="2"/>
-      <rect x="215" y="258" width="32" height="36" fill="#1e1810" opacity=".9"/>
-      <rect x="253" y="258" width="32" height="36" fill="#1e1810" opacity=".9"/>
-      <line x1="250" y1="255" x2="250" y2="300" stroke="#3a2820" stroke-width="1.5"/>
-      <!-- door knobs -->
-      <circle cx="243" cy="278" r="3.5" fill="#c9a96e" filter="url(#glow2)"/>
-      <circle cx="257" cy="278" r="3.5" fill="#c9a96e" filter="url(#glow2)"/>
-      <!-- Door arch -->
-      <path d="M212,258 Q212,248 250,245 Q288,248 288,258" fill="#c9a96e" opacity=".2"/>
-      <path d="M212,258 Q212,245 250,242 Q288,245 288,258" fill="none" stroke="#c9a96e" stroke-width="1.5" opacity=".5"/>
-      <!-- door warm glow -->
-      <rect x="212" y="255" width="76" height="45" fill="url(#warmglow)" opacity=".2"/>
-
-      <!-- Steps -->
-      <rect x="200" y="296" width="100" height="6" fill="#282018" rx="1"/>
-      <rect x="192" y="300" width="116" height="6" fill="#201808" rx="1"/>
-
-      <!-- Street lanterns -->
-      <g filter="url(#glow2)">
-        <!-- Left lantern -->
-        <line x1="75" y1="190" x2="75" y2="295" stroke="#3a3020" stroke-width="3"/>
-        <rect x="65" y="182" width="20" height="26" fill="#c9a96e" opacity=".15" rx="2"/>
-        <circle cx="75" cy="194" r="10" fill="#f8e080" opacity=".25"/>
-        <rect x="67" y="188" width="16" height="20" fill="none" stroke="#c9a96e" stroke-width="1.5" rx="2"/>
-        <circle cx="75" cy="198" r="5" fill="#f8d060" opacity=".8"/>
-        <!-- reflection on ground -->
-        <ellipse cx="75" cy="300" rx="15" ry="4" fill="#f8d060" opacity=".08"/>
-      </g>
-      <g filter="url(#glow2)">
-        <!-- Right lantern -->
-        <line x1="425" y1="190" x2="425" y2="295" stroke="#3a3020" stroke-width="3"/>
-        <rect x="415" y="182" width="20" height="26" fill="#c9a96e" opacity=".15" rx="2"/>
-        <circle cx="425" cy="194" r="10" fill="#f8e080" opacity=".25"/>
-        <rect x="417" y="188" width="16" height="20" fill="none" stroke="#c9a96e" stroke-width="1.5" rx="2"/>
-        <circle cx="425" cy="198" r="5" fill="#f8d060" opacity=".8"/>
-        <ellipse cx="425" cy="300" rx="15" ry="4" fill="#f8d060" opacity=".08"/>
-      </g>
-
-      <!-- Flower baskets flanking door -->
-      <g>
-        <path d="M195,258 Q190,265 198,272 Q206,265 195,258Z" fill="#2a1e10"/>
-        <ellipse cx="195" cy="272" rx="10" ry="5" fill="#5a7840"/>
-        <circle cx="190" cy="267" r="4" fill="#e88880" opacity=".9"/>
-        <circle cx="200" cy="265" r="3.5" fill="#f0a090" opacity=".9"/>
-        <circle cx="194" cy="261" r="3" fill="#d4a0d0" opacity=".9"/>
-
-        <path d="M305,258 Q310,265 302,272 Q294,265 305,258Z" fill="#2a1e10"/>
-        <ellipse cx="305" cy="272" rx="10" ry="5" fill="#5a7840"/>
-        <circle cx="310" cy="267" r="4" fill="#e88880" opacity=".9"/>
-        <circle cx="300" cy="265" r="3.5" fill="#f0a090" opacity=".9"/>
-        <circle cx="306" cy="261" r="3" fill="#d4a0d0" opacity=".9"/>
-      </g>
-    </svg>
+    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80" alt="Photorealistic interior of an elegant restaurant at night">
   </div>
 
   <div class="gold-rule reveal"><span class="gold-rule-icon">✦</span></div>
-  <p class="section-desc reveal">Ñ\u0549\u0561\u577\u056f\u0565\u580\u0578\u0582\u575\u569 \u056f\u0561\u576\u0581\u056f\u561\u581\u057e\u056b «Rhodens» \u057c\u0565\u057d\u057f\u0578\u580\u561\u576\u0578\u0582\u0574: Ñ\u0548\u582\u580\u561\u056d \u056f\u056c\u056b\u576\u584 Ñ\u0541\u0587\u566 \u570\u0575\u578\u582\u580\u561\u057d\u056b\u580\u0565\u056c \u0578\u582 \u056f\u056b\u057d\u0565\u056c \u561\u575\u057d \u561\u576\u0574\u578\u èռ\u561\u576\u0561\u056c\u056b \u585\u0561\u580\u056f\u0568:</p>
+  <p class="section-desc reveal">Ճաշկերույթը կանցկացվի «Rhodens» ռեստորանում: Ուրախ կլինենք Ձեզ այնտեղ տեսնել ու կիսել այս անմոռանալի պահերը:</p>
 </section>
 
 
-<!-- ════════════════════ RSVP ════════════════════ -->
 <section id="rsvp">
   <div class="rsvp-inner">
-    <p class="rsvp-eyebrow">Ñ\u0540\u561\u57d\u057f\u561\u057f\u0565\u056c \u0546\u0565\u580\u056f\u561\u575\u578\u582\u569\u0575\u0578\u0582\u576\u0568</p>
-    <h2 class="rsvp-title">Ñ¿\u056f\u0563\u561՞\u584</h2>
-    <p class="rsvp-sub">Ñ\u053d\u576\u564\u580\u0578\u0582\u0574 \u0565\u576\u584 \u570\u0561\u575\u057f\u576\u0565\u056c Ñ\u0541\u0587\u566 \u0574\u561\u057d\u576\u561\u056f\u581\u0578\u0582\u569\u0579\u0578\u0582\u0569\u0575\u0561\u576 \u0574\u561\u057d\u056b\u576 <strong>01.11.2026</strong>-\u056b\u576 \u0561\u057c\u561\u057b</p>
+    <p class="rsvp-eyebrow">Հաստատել Ներկայությունը</p>
+    <h2 class="rsvp-title">Կգա՞ք</h2>
+    <p class="rsvp-sub">Խնդրում ենք հայտնել Ձեր մասնակցության մասին <strong>01.11.2026</strong>-ից առաջ</p>
 
     <div class="rsvp-card">
       <div class="form-group">
-        <label class="field-label" for="gname">Ñ\u0541\u0587\u566 \u531\u576\u0578\u0582\u576\u0568 *</label>
-        <input type="text" id="gname" class="field-input" placeholder="\u531\u576\u0578\u582\u576 Ñ\u0531\u566\u563\u561\u576\u0578\u582\u576" autocomplete="off"/>
-        <p class="err" id="err-name">Ñ\u053d\u576\u564\u580\u0578\u0582\u0574 \u565\u576\u584 \u056c\u580\u561\u581\u576\u0565\u056c Ñ\u0541\u0587\u566 \u531\u576\u0578\u0582\u576\u0568</p>
+        <label class="field-label" for="gname">Ձեր Անունը *</label>
+        <input type="text" id="gname" class="field-input" placeholder="Անուն Ազգանուն" autocomplete="off"/>
+        <p class="err" id="err-name">Խնդրում ենք լրացնել Ձեր Անունը</p>
       </div>
 
-      <label class="field-label">Ñ\u0532\u561\u580\u0564\u0575\u0561\u576\u0578\u0582\u569\u0575\u0578\u0582\u576</label>
+      <label class="field-label">Պատասխան</label>
       <div class="choices">
         <button class="choice-btn" id="btn-yes" onclick="selectChoice('yes')">
           <input type="radio" name="rsvp" value="yes"/>
           <span class="choice-icon">✨</span>
-          <span class="choice-text">Ñ\u531\u575\u0578, Ñ\u056f\u0574\u561\u057d\u576\u561\u056f\u581\u0587\u0574</span>
+          <span class="choice-text">Այո, կմասնակցեմ</span>
         </button>
         <button class="choice-btn" id="btn-no" onclick="selectChoice('no')">
           <input type="radio" name="rsvp" value="no"/>
           <span class="choice-icon">🙏</span>
-          <span class="choice-text">Ñ\u0551\u561\u057e\u0578\u584, Ñ\u0579\u0587\u0574 Ñ\u056f\u561\u580\u0578\u572</span>
+          <span class="choice-text">Ցավոք, չեմ կարող</span>
         </button>
       </div>
-      <p class="err" id="err-attend">Ñ\u053d\u576\u564\u580\u0578\u0582\u0574 \u0565\u576\u584 \u0568\u576\u057f\u580\u0565\u056c \u0574\u056b \u057f\u561\u580\u562\u0565\u580\u561\u056f</p>
+      <p class="err" id="err-attend">Խնդրում ենք ընտրել մի տարբերակ</p>
 
       <button class="send-btn" onclick="sendRSVP()">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
           <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.02 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/>
         </svg>
-        WhatsApp-\u0578\u057e Ñ\u0548\u582\u572\u561\u580\u056f\u0565\u056c
+        WhatsApp-ով Ուղարկել
       </button>
     </div>
   </div>
 </section>
 
 
-<!-- ════════════════════ FOOTER ════════════════════ -->
 <footer>
-  <p class="footer-names">Ñ\u053c\u578\u582\u057d\u056b\u576\u0587 Ñ& Ñ\u0553\u056b\u057f\u0587\u580</p>
-  <p class="footer-date">12 · 12 · 2026 · Ñ\u0535\u580\u0587\u057e\u561\u576</p>
+  <p class="footer-names">Լուսինե & Պիտեր</p>
+  <p class="footer-date">12 · 12 · 2026 · Երևան</p>
 </footer>
 
 
-<!-- ════════════════════ SCRIPTS ════════════════════ -->
 <script>
 /* ── COUNTDOWN ── */
 (function tick(){
@@ -1317,7 +550,7 @@ footer{
   const diff = target - Date.now();
   if(diff <= 0){
     document.getElementById('countdown').innerHTML =
-      '<p style="font-family:Great Vibes,cursive;font-size:2rem;color:var(--goldlight)">Ñ\u531\u575\u057d\u0585 \u0587 \u574\u0587\u580 \u0585\u580\u0568 ♡</p>';
+      '<p style="font-family:var(--font-script);font-size:2.5rem;color:var(--goldlight)">Այսօր է այդ օրը ♡</p>';
     return;
   }
   const d = Math.floor(diff/86400000);
@@ -1334,156 +567,56 @@ footer{
 
 /* ── REALISTIC PIGEON ANIMATION ── */
 (function(){
-  const canvas = document.getElementById('pigeon-canvas');
+  const canvas = document.getElementById('realistic-pigeon-canvas');
   const ctx = canvas.getContext('2d');
   let W, H;
   function resize(){ W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
   resize(); window.addEventListener('resize', resize);
 
-  const DURATION = 5200;
+  const DURATION = 6000;
   const startTime = performance.now();
+
+  // Load realistic pigeon images (e.g., highly detailed PNG/WebP with transparent alpha)
+  // These assets should depict detailed plumage, feathers, and eye details.
+  // Using high-resolution photographic rendering placeholders for description.
+  const pigeonTop = new Image(); pigeonTop.src = 'https://images.unsplash.com/photo-1594966668742-8356f9a0c776?w=400&q=80';
+  const pigeonSide = new Image(); pigeonSide.src = 'https://images.unsplash.com/photo-1596791054359-58b9f30e051c?w=400&q=80';
+
+  let imagesLoaded = 0;
+  function imageLoaded() {
+    imagesLoaded++;
+    if(imagesLoaded === 2) { requestAnimationFrame(frame); }
+  }
+  pigeonTop.onload = imageLoaded;
+  pigeonSide.onload = imageLoaded;
 
   // Two pigeons: paths across the screen
   const birds = [
-    { sx:-120, sy: H*0.28, ex: W+120, ey: H*0.08, phase:0,    speedMult:1,    size:1.2 },
-    { sx:-90,  sy: H*0.38, ex: W+90,  ey: H*0.18, phase:1.1,  speedMult:0.85, size:1.0 },
+    { type: pigeonTop, sx:-120, sy: H*0.25, ex: W+120, ey: H*0.08, phase:0,    speedMult:1.1, size:0.6 },
+    { type: pigeonSide, sx:-100, sy: H*0.38, ex: W+100, ey: H*0.18, phase:1.2, speedMult:0.9, size:0.5 },
   ];
 
-  function drawRealisticPigeon(x, y, t, size, alpha){
+  function drawRealisticPigeon(bird, x, y, t, size, alpha){
     ctx.save();
     ctx.globalAlpha = Math.max(0, alpha);
     ctx.translate(x, y);
+    
+    // Sinusoidal vertical bob & tilt to simulate realistic movement/glide
+    const flap = Math.sin(t * 8.5) * 20;  // wing angle offset for simulation (visual bob)
+    const bob = Math.sin(t * 1.5 + birds[0].phase) * 6; // slow vertical weave
+    const tilt = -0.15; // slight nose-down flight path
+
+    ctx.translate(0, bob);
+    ctx.rotate(tilt + flap * 0.003); // dynamic rotation from root
     ctx.scale(size, size);
 
-    const flap = Math.sin(t * 7.5) * 22;  // wing flap angle offset
-    const tilt = -0.18; // slight nose-down glide angle
-    ctx.rotate(tilt);
-
-    // ── TAIL ──
-    ctx.beginPath();
-    ctx.moveTo(-30, 4);
-    ctx.bezierCurveTo(-44, 2, -52, 10, -48, 14);
-    ctx.bezierCurveTo(-44, 18, -36, 14, -28, 8);
-    ctx.closePath();
-    ctx.fillStyle = '#c8c0b8';
-    ctx.fill();
-    // tail feather lines
-    ctx.strokeStyle = '#a8a098'; ctx.lineWidth = 0.7;
-    for(let i=0;i<5;i++){
-      const a = -0.3 + i*0.15;
-      ctx.beginPath();
-      ctx.moveTo(-30, 5);
-      ctx.lineTo(-46 + i*2, 14 - i*0.5);
-      ctx.stroke();
-    }
-
-    // ── BODY ──
-    ctx.beginPath();
-    ctx.ellipse(0, 0, 30, 13, 0, 0, Math.PI*2);
-    // pigeon blue-grey gradient
-    const bodyGrad = ctx.createLinearGradient(0,-14,0,14);
-    bodyGrad.addColorStop(0,'#9aa8b8');
-    bodyGrad.addColorStop(0.4,'#7888a0');
-    bodyGrad.addColorStop(1,'#6070880');
-    ctx.fillStyle = '#8898a8';
-    ctx.fill();
-    // iridescent neck patch
-    ctx.beginPath();
-    ctx.ellipse(14, -2, 10, 7, -0.3, 0, Math.PI*2);
-    const neckGrad = ctx.createRadialGradient(14,-2,1,14,-2,10);
-    neckGrad.addColorStop(0,'rgba(80,200,120,.55)');
-    neckGrad.addColorStop(0.5,'rgba(180,80,200,.35)');
-    neckGrad.addColorStop(1,'transparent');
-    ctx.fillStyle = neckGrad;
-    ctx.fill();
-
-    // ── UPPER WING (flaps up) ──
-    ctx.save();
-    ctx.translate(-2, -4);
-    ctx.rotate(-flap * 0.022); // rotate from root
-    ctx.beginPath();
-    ctx.moveTo(0, 0);
-    ctx.bezierCurveTo(-8, -flap*0.6-8, -28, -flap-12, -42, -flap*0.8-6);
-    ctx.bezierCurveTo(-36, -flap*0.5+2, -18, -flap*0.3+4, 0, 6);
-    ctx.closePath();
-    const wingGrad = ctx.createLinearGradient(0,0,-42,-flap-12);
-    wingGrad.addColorStop(0,'#7888a0');
-    wingGrad.addColorStop(0.6,'#8898b0');
-    wingGrad.addColorStop(1,'#b0b8c8');
-    ctx.fillStyle = wingGrad;
-    ctx.fill();
-    // primary feather lines
-    ctx.strokeStyle = '#6878900'; ctx.lineWidth = 0.8;
-    for(let i=0;i<7;i++){
-      const xp = -28 - i*2;
-      const yp = -flap*0.7 - 8 + i*1.5;
-      ctx.beginPath(); ctx.moveTo(-4+i*2, 2); ctx.lineTo(xp, yp); ctx.stroke();
-    }
-    ctx.restore();
-
-    // ── LOWER WING (mirror, flaps down) ──
-    ctx.save();
-    ctx.translate(-2, 4);
-    ctx.rotate(flap * 0.022);
-    ctx.beginPath();
-    ctx.moveTo(0, 0);
-    ctx.bezierCurveTo(-8, flap*0.6+8, -28, flap+12, -42, flap*0.8+6);
-    ctx.bezierCurveTo(-36, flap*0.5-2, -18, flap*0.3-4, 0, -6);
-    ctx.closePath();
-    const wing2Grad = ctx.createLinearGradient(0,0,-42,flap+12);
-    wing2Grad.addColorStop(0,'#6878900');
-    wing2Grad.addColorStop(0.6,'#788898');
-    wing2Grad.addColorStop(1,'#a0a8b8');
-    ctx.fillStyle = '#7888a0';
-    ctx.fill();
-    ctx.restore();
-
-    // ── HEAD ──
-    ctx.beginPath();
-    ctx.ellipse(22, -6, 11, 9, -0.2, 0, Math.PI*2);
-    ctx.fillStyle = '#8898a8';
-    ctx.fill();
-    // head highlight
-    ctx.beginPath();
-    ctx.ellipse(24, -9, 5, 4, -0.3, 0, Math.PI*2);
-    ctx.fillStyle = 'rgba(255,255,255,.12)';
-    ctx.fill();
-
-    // ── BEAK ──
-    ctx.beginPath();
-    ctx.moveTo(32, -7);
-    ctx.lineTo(40, -6.5);
-    ctx.lineTo(32, -4.5);
-    ctx.closePath();
-    ctx.fillStyle = '#b0a090';
-    ctx.fill();
-    // beak cere (white saddle)
-    ctx.beginPath();
-    ctx.ellipse(32.5, -7, 3.5, 2.5, -0.1, 0, Math.PI*2);
-    ctx.fillStyle = '#f0ece8';
-    ctx.fill();
-
-    // ── EYE ──
-    ctx.beginPath();
-    ctx.arc(26, -8, 3.2, 0, Math.PI*2);
-    ctx.fillStyle = '#e85028'; // red-orange iris
-    ctx.fill();
-    ctx.beginPath();
-    ctx.arc(26, -8, 2, 0, Math.PI*2);
-    ctx.fillStyle = '#100808';
-    ctx.fill();
-    // eye highlight
-    ctx.beginPath();
-    ctx.arc(27, -9, 0.8, 0, Math.PI*2);
-    ctx.fillStyle = 'rgba(255,255,255,.7)';
-    ctx.fill();
-
-    // ── LEGS ──
-    ctx.strokeStyle = '#c0a080'; ctx.lineWidth = 1.5;
-    ctx.beginPath(); ctx.moveTo(4,12); ctx.lineTo(2,22); ctx.lineTo(-3,26); ctx.stroke();
-    ctx.beginPath(); ctx.moveTo(4,12); ctx.lineTo(7,22); ctx.lineTo(10,26); ctx.stroke();
-    ctx.beginPath(); ctx.moveTo(-2,12); ctx.lineTo(-4,22); ctx.lineTo(-9,26); ctx.stroke();
-    ctx.beginPath(); ctx.moveTo(-2,12); ctx.lineTo(1,22); ctx.lineTo(4,26); ctx.stroke();
+    // Instead of drawing shapes, draw pre-rendered realistic pigeon image
+    // Assume assets are PNGs with transparent backgrounds.
+    const img = bird.type;
+    // asset dimensions simulation for drawImage. asset should be well-cropped.
+    const width = 200; 
+    const height = 130;
+    ctx.drawImage(img, -width/2, -height/2, width, height);
 
     ctx.restore();
   }
@@ -1496,16 +629,15 @@ footer{
     ctx.clearRect(0, 0, W, H);
 
     let alpha = 1;
-    if(t < 0.12) alpha = t / 0.12;
-    else if(t > 0.78) alpha = 1 - (t - 0.78)/0.22;
+    if(t < 0.15) alpha = t / 0.15; // fade in
+    else if(t > 0.82) alpha = 1 - (t - 0.82)/0.18; // fade out
     alpha = Math.max(0, Math.min(1, alpha));
 
     birds.forEach(b => {
       const bx = b.sx + (b.ex - b.sx) * t;
       const by = b.sy + (b.ey - b.sy) * t;
-      // sinusoidal slight vertical bob
-      const bob = Math.sin(elapsed/280 + b.phase) * 5;
-      drawRealisticPigeon(bx, by + bob, elapsed/1000 * b.speedMult + b.phase, b.size, alpha);
+      // bobbing logic integrated inside drawRealisticPigeon
+      drawRealisticPigeon(b, bx, by, elapsed/1000, b.size, alpha);
     });
 
     if(t < 1){ requestAnimationFrame(frame); }
@@ -1515,7 +647,6 @@ footer{
       canvas.style.display = 'none';
     }
   }
-  requestAnimationFrame(frame);
 })();
 
 
@@ -1544,10 +675,10 @@ function sendRSVP(){
   if(!ok) return;
 
   const line = chosen === 'yes'
-    ? '\u2705 Այo, կмаснаkcем Лусіneyi & Пітеры harsniqin!'
-    : '\uD83D\uDE4F Цавoq, чem карoг маснаkcel:';
+    ? '\u2705 Այո, կմասնակցեմ Լուսինեի & Պիտերի հարսանիքին!'
+    : '\uD83D\uDE4F Ցավոք, չեմ կարող մասնակցել:';
 
-  const msg = encodeURIComponent(`📋 RSVP — Լусіne & Пітер (12.12.2026)\n\n👤 Аnum: ${name}\n${line}`);
+  const msg = encodeURIComponent(`📋 RSVP — Լուսինե & Պիտեր (12.12.2026)\n\n👤 Անուն: ${name}\n${line}`);
   window.open(`https://wa.me/37433213330?text=${msg}`, '_blank');
 }
 </script>
