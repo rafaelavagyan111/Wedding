@@ -19,7 +19,6 @@
   --muted:#7a5c52;
   --white:#ffffff;
   
-  /* ── NEW FONTS ── */
   --font-script: 'Corinthia', cursive;
   --font-serif: 'Prata', serif;
   --font-sans: 'Montserrat', sans-serif;
@@ -29,11 +28,53 @@
 html{scroll-behavior:smooth;font-size:16px}
 body{background:var(--cream);color:var(--text);font-family:var(--font-body);overflow-x:hidden}
 
-/* ── REALISTIC PIGEON CANVAS ── */
-#realistic-pigeon-canvas{
-  position:fixed;top:0;left:0;
-  width:100%;height:100%;
-  pointer-events:none;z-index:9999;
+/* ── PIGEONS ANIMATION (CSS-BASED FOR RELIABILITY) ── */
+.pigeon-container {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  overflow: hidden;
+}
+.pigeon {
+  position: absolute;
+  left: -200px; /* Start off-screen */
+  width: clamp(100px, 15vw, 150px);
+  /* Using a reliable transparent realistic bird placeholder */
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Pigeon_in_flight_1.png/320px-Pigeon_in_flight_1.png'); 
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  filter: drop-shadow(0 10px 10px rgba(0,0,0,0.2));
+}
+
+.pigeon-1 {
+  top: 15%;
+  height: 100px;
+  animation: flyRight1 7s linear forwards, flapBob 0.8s ease-in-out infinite alternate;
+  animation-delay: 0.5s;
+}
+
+.pigeon-2 {
+  top: 30%;
+  height: 80px;
+  width: clamp(80px, 12vw, 120px);
+  animation: flyRight2 9s linear forwards, flapBob 0.9s ease-in-out infinite alternate;
+  animation-delay: 1.2s;
+  opacity: 0.8;
+}
+
+@keyframes flyRight1 {
+  0% { transform: translateX(-10vw) scaleX(-1); } /* scaleX(-1) if the image faces left, adjust based on actual image */
+  100% { transform: translateX(120vw) scaleX(-1) translateY(-50px); }
+}
+@keyframes flyRight2 {
+  0% { transform: translateX(-10vw) scaleX(-1); }
+  100% { transform: translateX(120vw) scaleX(-1) translateY(-30px); }
+}
+@keyframes flapBob {
+  0% { margin-top: 0px; }
+  100% { margin-top: -15px; }
 }
 
 /* ══════════════ HERO ══════════════ */
@@ -48,15 +89,15 @@ body{background:var(--cream);color:var(--text);font-family:var(--font-body);over
 
 .hero-bg{
   position:absolute;inset:0;
-  background-image:url('https://images.unsplash.com/photo-1596484552934-8c813735164f?w=2000&q=80'); /* Realistic landscape photo of Armenia */
+  /* Thematic image: Romantic Couple */
+  background-image:url('https://images.unsplash.com/photo-1519741497674-611481863552?w=1600&q=80'); 
   background-size:cover;
-  background-position:center 60%;
+  background-position:center 40%;
   transform:scale(1.04);
   animation:bgZoom 12s ease forwards;
 }
 @keyframes bgZoom{from{transform:scale(1.08)}to{transform:scale(1)}}
 
-/* Gradient overlay: dark at bottom for text, light fade top */
 .hero-overlay{
   position:absolute;inset:0;
   background:
@@ -66,15 +107,6 @@ body{background:var(--cream);color:var(--text);font-family:var(--font-body);over
       rgba(20,10,8,0.60) 65%,
       rgba(20,10,8,0.85) 100%
     );
-}
-
-/* Subtle grain texture */
-.hero-overlay::after{
-  content:'';
-  position:absolute;inset:0;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
-  background-size:200px 200px;
-  pointer-events:none;opacity:.5;
 }
 
 .hero-content{
@@ -189,7 +221,6 @@ body{background:var(--cream);color:var(--text);font-family:var(--font-body);over
 .event-section:nth-child(odd){background:var(--cream)}
 .event-section:nth-child(even){background:#f8ede5}
 
-/* watermark letter */
 .section-watermark{
   position:absolute;
   font-family:var(--font-script);
@@ -232,7 +263,6 @@ body{background:var(--cream);color:var(--text);font-family:var(--font-body);over
   font-weight:300;
 }
 
-/* ── Gold rule ── */
 .gold-rule{
   display:flex;align-items:center;gap:1rem;
   width:100%;max-width:300px;
@@ -258,8 +288,91 @@ body{background:var(--cream);color:var(--text);font-family:var(--font-body);over
 .illus-wrap img{
   width:100%;height:auto;
   display:block;
-  border-radius:15px; /* Subtle frame */
+  border-radius:15px;
   object-fit: cover;
+  aspect-ratio: 4/3;
+}
+
+/* ══════════════ DRESS CODE ══════════════ */
+.colors-wrap {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+.color-swatch {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  border: 2px solid var(--white);
+}
+
+/* ══════════════ CALENDAR ══════════════ */
+.calendar-wrap {
+  background: var(--white);
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 10px 40px rgba(46,31,26,.08);
+  margin-top: 2rem;
+  width: min(350px, 100%);
+}
+.cal-month {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  text-align: center;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  text-align: center;
+}
+.cal-day-name {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  color: var(--muted);
+  font-weight: 700;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  margin-bottom: 5px;
+}
+.cal-date {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--text);
+  padding: 8px 0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  margin: 0 auto;
+}
+.cal-date.empty {
+  background: transparent;
+}
+.cal-date.heart-mark {
+  background: var(--rose);
+  color: var(--white);
+  font-weight: bold;
+  position: relative;
+  box-shadow: 0 4px 12px rgba(201,133,122,.4);
+}
+.cal-date.heart-mark::after {
+  content: '♥';
+  position: absolute;
+  top: -12px;
+  right: -8px;
+  font-size: 1.2rem;
+  color: var(--deeprose);
+  transform: rotate(15deg);
 }
 
 /* ══════════════ RSVP ══════════════ */
@@ -405,7 +518,10 @@ footer{
 </head>
 <body>
 
-<canvas id="realistic-pigeon-canvas"></canvas>
+<div class="pigeon-container">
+  <div class="pigeon pigeon-1"></div>
+  <div class="pigeon pigeon-2"></div>
+</div>
 
 <section id="hero">
   <div class="hero-bg"></div>
@@ -437,6 +553,75 @@ footer{
   </div>
 </section>
 
+<section class="event-section" id="dress-code">
+  <span class="section-watermark">Ոճ</span>
+  <p class="section-badge reveal">Արտաքին Տեսք</p>
+  <h2 class="section-title reveal">Դրես Կոդ</h2>
+  
+  <div class="gold-rule reveal"><span class="gold-rule-icon">✦</span></div>
+  <p class="section-desc reveal">Խնդրում ենք պահպանել երեկոյան նրբաճաշակ ոճը ներքոհիշյալ գունային երանգների մեջ։</p>
+  
+  <div class="colors-wrap reveal">
+    <div class="color-swatch" style="background: #2e1f1a;" title="Մուգ Շագանակագույն/Սև"></div>
+    <div class="color-swatch" style="background: #a85f58;" title="Խորը Վարդագույն"></div>
+    <div class="color-swatch" style="background: #e8c4b4;" title="Բաց Երանգ"></div>
+    <div class="color-swatch" style="background: #8fa882;" title="Մեղմ Կանաչ"></div>
+    <div class="color-swatch" style="background: #c4963c;" title="Ոսկեգույն"></div>
+  </div>
+</section>
+
+
+<section class="event-section" id="calendar">
+  <span class="section-watermark">Օր</span>
+  <p class="section-badge reveal">Հիշարժան Օր</p>
+  <h2 class="section-title reveal">Օրացույց</h2>
+  
+  <div class="calendar-wrap reveal">
+    <div class="cal-month">Դեկտեմբեր 2026</div>
+    <div class="cal-grid">
+      <div class="cal-day-name">Երկ</div>
+      <div class="cal-day-name">Երք</div>
+      <div class="cal-day-name">Չրք</div>
+      <div class="cal-day-name">Հնգ</div>
+      <div class="cal-day-name">Ուրբ</div>
+      <div class="cal-day-name">Շբթ</div>
+      <div class="cal-day-name">Կիր</div>
+      
+      <div class="cal-date empty"></div> 
+      <div class="cal-date">1</div>
+      <div class="cal-date">2</div>
+      <div class="cal-date">3</div>
+      <div class="cal-date">4</div>
+      <div class="cal-date">5</div>
+      <div class="cal-date">6</div>
+      <div class="cal-date">7</div>
+      <div class="cal-date">8</div>
+      <div class="cal-date">9</div>
+      <div class="cal-date">10</div>
+      <div class="cal-date">11</div>
+      <div class="cal-date heart-mark">12</div>
+      <div class="cal-date">13</div>
+      <div class="cal-date">14</div>
+      <div class="cal-date">15</div>
+      <div class="cal-date">16</div>
+      <div class="cal-date">17</div>
+      <div class="cal-date">18</div>
+      <div class="cal-date">19</div>
+      <div class="cal-date">20</div>
+      <div class="cal-date">21</div>
+      <div class="cal-date">22</div>
+      <div class="cal-date">23</div>
+      <div class="cal-date">24</div>
+      <div class="cal-date">25</div>
+      <div class="cal-date">26</div>
+      <div class="cal-date">27</div>
+      <div class="cal-date">28</div>
+      <div class="cal-date">29</div>
+      <div class="cal-date">30</div>
+      <div class="cal-date">31</div>
+    </div>
+  </div>
+</section>
 
 <section class="event-section" id="girls-house">
   <span class="section-watermark">Հարս</span>
@@ -445,11 +630,11 @@ footer{
   <p class="section-time reveal">12:00</p>
 
   <div class="illus-wrap reveal">
-    <img src="https://images.unsplash.com/photo-1549413289-54316d311394?w=800&q=80" alt="Photorealistic detailed traditional Armenian house">
+    <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=800&q=80" alt="Bride details placeholder">
   </div>
 
   <div class="gold-rule reveal"><span class="gold-rule-icon">✦</span></div>
-  <p class="section-desc reveal">Ուրախությամբ հրավիրում եմ Ձեզ Լուսինեի և ծնողական տուն՝ մեկնարկելու այս հատուկ օրվա տոնախմբությունը:</p>
+  <p class="section-desc reveal">Ուրախությամբ հրավիրում եմ Ձեզ Լուսինեի ծնողական տուն՝ մեկնարկելու այս հատուկ օրվա տոնախմբությունը:</p>
 </section>
 
 
@@ -460,7 +645,7 @@ footer{
   <p class="section-time reveal">14:00</p>
 
   <div class="illus-wrap reveal">
-    <img src="https://images.unsplash.com/photo-1596706797746-81c15c898c6b?w=800&q=80" alt="Photorealistic detailed Armenian Church">
+    <img src="https://images.unsplash.com/photo-1548625361-ecacbd75f6e8?w=800&q=80" alt="Beautiful church placeholder">
   </div>
 
   <div class="gold-rule reveal"><span class="gold-rule-icon">✦</span></div>
@@ -475,11 +660,11 @@ footer{
   <p class="section-time reveal">16:00</p>
 
   <div class="illus-wrap reveal">
-    <img src="https://images.unsplash.com/photo-1512401666353-8d042642a8b9?w=800&q=80" alt="Another photorealistic traditional Armenian house">
+    <img src="https://images.unsplash.com/photo-1509017174183-0b7e0278f1ec?w=800&q=80" alt="Groom celebration placeholder">
   </div>
 
   <div class="gold-rule reveal"><span class="gold-rule-icon">✦</span></div>
-  <p class="section-desc reveal">Հարսի հետ միասին կգնանք Փիտերի ծնողական տուն` ծնողների հայրական օրհնությունը ստանալու:</p>
+  <p class="section-desc reveal">Հարսի հետ միասին կգնանք Պիտերի ծնողական տուն` ծնողների հայրական օրհնությունը ստանալու:</p>
 </section>
 
 
@@ -490,7 +675,7 @@ footer{
   <p class="section-time reveal">18:00</p>
 
   <div class="illus-wrap reveal">
-    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80" alt="Photorealistic interior of an elegant restaurant at night">
+    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80" alt="Elegant restaurant reception">
   </div>
 
   <div class="gold-rule reveal"><span class="gold-rule-icon">✦</span></div>
@@ -564,91 +749,11 @@ footer{
   setTimeout(tick, 1000);
 })();
 
-
-/* ── REALISTIC PIGEON ANIMATION ── */
-(function(){
-  const canvas = document.getElementById('realistic-pigeon-canvas');
-  const ctx = canvas.getContext('2d');
-  let W, H;
-  function resize(){ W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
-  resize(); window.addEventListener('resize', resize);
-
-  const DURATION = 6000;
-  const startTime = performance.now();
-
-  // Load realistic pigeon images (e.g., highly detailed PNG/WebP with transparent alpha)
-  // These assets should depict detailed plumage, feathers, and eye details.
-  // Using high-resolution photographic rendering placeholders for description.
-  const pigeonTop = new Image(); pigeonTop.src = 'https://images.unsplash.com/photo-1594966668742-8356f9a0c776?w=400&q=80';
-  const pigeonSide = new Image(); pigeonSide.src = 'https://images.unsplash.com/photo-1596791054359-58b9f30e051c?w=400&q=80';
-
-  let imagesLoaded = 0;
-  function imageLoaded() {
-    imagesLoaded++;
-    if(imagesLoaded === 2) { requestAnimationFrame(frame); }
-  }
-  pigeonTop.onload = imageLoaded;
-  pigeonSide.onload = imageLoaded;
-
-  // Two pigeons: paths across the screen
-  const birds = [
-    { type: pigeonTop, sx:-120, sy: H*0.25, ex: W+120, ey: H*0.08, phase:0,    speedMult:1.1, size:0.6 },
-    { type: pigeonSide, sx:-100, sy: H*0.38, ex: W+100, ey: H*0.18, phase:1.2, speedMult:0.9, size:0.5 },
-  ];
-
-  function drawRealisticPigeon(bird, x, y, t, size, alpha){
-    ctx.save();
-    ctx.globalAlpha = Math.max(0, alpha);
-    ctx.translate(x, y);
-    
-    // Sinusoidal vertical bob & tilt to simulate realistic movement/glide
-    const flap = Math.sin(t * 8.5) * 20;  // wing angle offset for simulation (visual bob)
-    const bob = Math.sin(t * 1.5 + birds[0].phase) * 6; // slow vertical weave
-    const tilt = -0.15; // slight nose-down flight path
-
-    ctx.translate(0, bob);
-    ctx.rotate(tilt + flap * 0.003); // dynamic rotation from root
-    ctx.scale(size, size);
-
-    // Instead of drawing shapes, draw pre-rendered realistic pigeon image
-    // Assume assets are PNGs with transparent backgrounds.
-    const img = bird.type;
-    // asset dimensions simulation for drawImage. asset should be well-cropped.
-    const width = 200; 
-    const height = 130;
-    ctx.drawImage(img, -width/2, -height/2, width, height);
-
-    ctx.restore();
-  }
-
-  let active = true;
-  function frame(now){
-    if(!active) return;
-    const elapsed = now - startTime;
-    const t = elapsed / DURATION;
-    ctx.clearRect(0, 0, W, H);
-
-    let alpha = 1;
-    if(t < 0.15) alpha = t / 0.15; // fade in
-    else if(t > 0.82) alpha = 1 - (t - 0.82)/0.18; // fade out
-    alpha = Math.max(0, Math.min(1, alpha));
-
-    birds.forEach(b => {
-      const bx = b.sx + (b.ex - b.sx) * t;
-      const by = b.sy + (b.ey - b.sy) * t;
-      // bobbing logic integrated inside drawRealisticPigeon
-      drawRealisticPigeon(b, bx, by, elapsed/1000, b.size, alpha);
-    });
-
-    if(t < 1){ requestAnimationFrame(frame); }
-    else {
-      ctx.clearRect(0,0,W,H);
-      active = false;
-      canvas.style.display = 'none';
-    }
-  }
-})();
-
+/* ── PIGEONS CLEANUP (Removes them from DOM after animation ends) ── */
+setTimeout(() => {
+  const container = document.querySelector('.pigeon-container');
+  if(container) container.remove();
+}, 11000);
 
 /* ── SCROLL REVEAL ── */
 const revealObs = new IntersectionObserver(entries => {
