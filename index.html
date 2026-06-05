@@ -28,63 +28,28 @@
 html{scroll-behavior:smooth;font-size:16px; overflow-x:hidden}
 body{background:var(--cream);color:var(--text);font-family:var(--font-body);overflow-x:hidden}
 
-/* ── GUARANTEED FLYING DOVES (PURE SVG & CSS) ── */
-.pigeon-container {
+/* ── FALLING ROSE PETALS (ON LOAD) ── */
+#petals-container {
   position: fixed;
-  top: 0; left: 0; width: 100%; height: 100%;
+  top: 0; left: 0;
+  width: 100%; height: 100vh;
   pointer-events: none;
   z-index: 9999;
   overflow: hidden;
 }
-
-.dove-wrapper {
+.petal {
   position: absolute;
-  left: -20%; /* Start safely off screen */
-  filter: drop-shadow(0 15px 15px rgba(0,0,0,0.25));
-  opacity: 0.9;
+  top: -10%;
+  border-radius: 15px 0 15px 0; /* Creates a teardrop/petal shape */
+  opacity: 0;
+  animation: falling linear forwards;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
-
-.dove-1 {
-  width: clamp(80px, 15vw, 120px);
-  top: 15%;
-  animation: flyRight1 7s cubic-bezier(0.25, 0.1, 0.25, 1) forwards, bob 1.2s ease-in-out infinite alternate;
-}
-
-.dove-2 {
-  width: clamp(60px, 12vw, 90px);
-  top: 35%;
-  animation: flyRight2 8.5s cubic-bezier(0.25, 0.1, 0.25, 1) forwards, bob 1.4s ease-in-out infinite alternate;
-  animation-delay: 0.5s;
-  opacity: 0.75;
-}
-
-/* Flapping wings animation inside the SVG */
-.wing {
-  transform-origin: center 40%;
-  animation: flap 0.4s ease-in-out infinite alternate;
-}
-.dove-2 .wing {
-  animation-duration: 0.35s; /* Slightly faster flap for the smaller dove */
-}
-
-@keyframes flap {
-  0% { transform: scaleY(1) rotate(0deg); }
-  100% { transform: scaleY(-0.6) rotate(-15deg); }
-}
-
-@keyframes flyRight1 {
-  0% { transform: translateX(0) rotate(-10deg); }
-  100% { transform: translateX(140vw) translateY(-15vh) rotate(5deg); }
-}
-
-@keyframes flyRight2 {
-  0% { transform: translateX(0) rotate(-15deg); }
-  100% { transform: translateX(140vw) translateY(-10vh) rotate(10deg); }
-}
-
-@keyframes bob {
-  0% { margin-top: 0px; }
-  100% { margin-top: -20px; }
+@keyframes falling {
+  0% { transform: translate(0, 0) rotate(0deg) scale(0.8); opacity: 0; }
+  10% { opacity: 0.8; transform: translate(calc(var(--end-x) * 0.1), 10vh) rotate(45deg) scale(1); }
+  90% { opacity: 0.8; }
+  100% { transform: translate(var(--end-x), 110vh) rotate(var(--end-rot)) scale(0.9); opacity: 0; }
 }
 
 /* ══════════════ HERO ══════════════ */
@@ -117,10 +82,10 @@ body{background:var(--cream);color:var(--text);font-family:var(--font-body);over
   text-align:center;
   padding:0 1.5rem 5vh;
   width:100%;
-  animation:heroFadeUp 1.4s cubic-bezier(.22,1,.36,1) .3s both;
+  animation:heroFadeUp 1.8s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both;
 }
 @keyframes heroFadeUp{
-  from{opacity:0;transform:translateY(40px)}
+  from{opacity:0;transform:translateY(50px)}
   to{opacity:1;transform:translateY(0)}
 }
 
@@ -171,6 +136,11 @@ body{background:var(--cream);color:var(--text);font-family:var(--font-body);over
   border:1px solid rgba(255,255,255,.18);
   border-radius:20px;
   padding:clamp(.9rem,2.5vw,1.2rem) clamp(1rem,4vw,2.8rem);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+#countdown:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
 .cd-unit{display:flex;flex-direction:column;align-items:center;min-width:clamp(38px, 8vw, 50px)}
 .cd-num{
@@ -303,14 +273,24 @@ body{background:var(--cream);color:var(--text);font-family:var(--font-body);over
 .illus-wrap{
   width:min(400px, 90vw);
   margin:0 auto 2rem;
-  filter:drop-shadow(0 12px 30px rgba(46,31,26,.12));
+  border-radius:15px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(46,31,26,.15);
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.6s ease;
+}
+.illus-wrap:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 25px 45px rgba(46,31,26,.2);
 }
 .illus-wrap img{
   width:100%;height:auto;
   display:block;
-  border-radius:15px;
   object-fit: cover;
   aspect-ratio: 4/3;
+  transition: transform 0.6s ease;
+}
+.illus-wrap:hover img {
+  transform: scale(1.05);
 }
 
 /* ══════════════ DRESS CODE ══════════════ */
@@ -327,6 +307,10 @@ body{background:var(--cream);color:var(--text);font-family:var(--font-body);over
   border-radius: 50%;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   border: 2px solid var(--white);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.color-swatch:hover {
+  transform: scale(1.15) translateY(-3px);
 }
 
 /* ══════════════ CALENDAR ══════════════ */
@@ -337,6 +321,10 @@ body{background:var(--cream);color:var(--text);font-family:var(--font-body);over
   box-shadow: 0 10px 40px rgba(46,31,26,.08);
   margin-top: 1.5rem;
   width: min(360px, 100%);
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.calendar-wrap:hover {
+  transform: translateY(-5px);
 }
 .cal-month {
   font-family: var(--font-serif);
@@ -384,6 +372,7 @@ body{background:var(--cream);color:var(--text);font-family:var(--font-body);over
   font-weight: bold;
   position: relative;
   box-shadow: 0 4px 12px rgba(201,133,122,.4);
+  animation: heartbeat 2s infinite;
 }
 .cal-date.heart-mark::after {
   content: '♥';
@@ -393,6 +382,15 @@ body{background:var(--cream);color:var(--text);font-family:var(--font-body);over
   font-size: 1.1rem;
   color: var(--deeprose);
   transform: rotate(15deg);
+}
+
+@keyframes heartbeat {
+  0% { transform: scale(1); }
+  10% { transform: scale(1.1); }
+  20% { transform: scale(1); }
+  30% { transform: scale(1.1); }
+  40% { transform: scale(1); }
+  100% { transform: scale(1); }
 }
 
 /* ══════════════ RSVP ══════════════ */
@@ -446,7 +444,7 @@ body{background:var(--cream);color:var(--text);font-family:var(--font-body);over
   font-family:var(--font-body);
   font-size:1.1rem;color:var(--text);
   outline:none;
-  transition:border-color .25s;
+  transition:border-color .4s ease;
   margin-bottom:1.8rem;
 }
 .field-input::placeholder{color:#c8a89c;font-style:italic}
@@ -465,7 +463,7 @@ body{background:var(--cream);color:var(--text);font-family:var(--font-body);over
   padding:1rem .5rem;
   cursor:pointer;
   background:transparent;
-  transition:all .25s;
+  transition:all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
   text-align:center;
   font-family:var(--font-body);
   color:var(--text);
@@ -473,11 +471,13 @@ body{background:var(--cream);color:var(--text);font-family:var(--font-body);over
 .choice-btn:hover{
   border-color:var(--rose);
   background:rgba(201,133,122,.06);
+  transform: translateY(-2px);
 }
 .choice-btn.active{
   border-color:var(--rose);
   background:rgba(201,133,122,.1);
-  box-shadow:0 4px 16px rgba(201,133,122,.2);
+  box-shadow:0 6px 20px rgba(201,133,122,.2);
+  transform: translateY(-2px);
 }
 .choice-btn input{display:none}
 .choice-icon{font-size:1.3rem;display:block;margin-bottom:.3rem}
@@ -501,12 +501,12 @@ body{background:var(--cream);color:var(--text);font-family:var(--font-body);over
   text-transform:uppercase;
   cursor:pointer;
   display:flex;align-items:center;justify-content:center;gap:.7rem;
-  transition:all .3s;
+  transition:all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
   box-shadow:0 8px 28px rgba(168,95,88,.35);
 }
 .send-btn:hover{
-  transform:translateY(-2px);
-  box-shadow:0 14px 36px rgba(168,95,88,.45);
+  transform:translateY(-3px);
+  box-shadow:0 15px 36px rgba(168,95,88,.45);
 }
 .send-btn:active{transform:translateY(0)}
 .send-btn svg{width:17px;flex-shrink:0}
@@ -530,32 +530,26 @@ footer{
   color:rgba(255,255,255,.3);
 }
 
-/* ══════════════ REVEAL ══════════════ */
+/* ══════════════ SMOOTH REVEAL ANIMATIONS ══════════════ */
 .reveal{
-  opacity:0;transform:translateY(28px);
-  transition:opacity .9s ease, transform .9s ease;
+  opacity:0;
+  transform:translateY(40px); /* Increased drop for smoother effect */
+  /* Using a custom cubic-bezier for a "buttery" smooth deceleration */
+  transition: opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1), transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
 }
-.reveal.vis{opacity:1;transform:translateY(0)}
+.reveal.vis{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* Staggering delays so items flow in one after the other */
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.25s; }
+.delay-3 { transition-delay: 0.4s; }
+.delay-4 { transition-delay: 0.55s; }
 </style>
 </head>
 <body>
-
-<div class="pigeon-container" id="pigeon-layer">
-  
-  <div class="dove-wrapper dove-1">
-    <svg viewBox="0 0 512 512" fill="#ffffff" xmlns="http://www.w3.org/2000/svg">
-      <path d="M438.6 278.6c-24.3-8.8-54-15.6-86.4-18.7-27-2.6-50.6-2.6-69.5-.7-6.2.6-11.8 1.5-16.7 2.6-11 2.3-18.9 5.2-24 8.2-16.6 9.8-19.4 25.5-19.4 25.5-1.5 5.5-10.4 20.3-25.5 35-15.7 15.3-33.8 28.5-51 38.6-23.7 13.9-45 20.6-59.5 23-14.7 2.4-25.2.9-30-.5-7.5-2.2-12.7-6.2-15-8.5-2.2-2.3-4.1-5.5-5-9.3-1.4-5.6-.3-12.5 3.3-19.8 4.6-9.3 12.3-19 22.3-27.8 18.2-16 43.5-29.3 69.8-37 32-9.4 66.8-11.3 98.4-5.2 24.3 4.7 46 13.3 64 25 15.6 10.1 28.5 22.3 38.3 35.8 8.8 12.1 14.5 25.3 17.5 38.8 2.2 9.8 2.5 19.8.9 29.8-1.5 9.4-4.8 18.4-9.8 26.5-6.5 10.6-15.5 19.3-26.5 25.4-15.8 8.8-35.3 12.3-55.8 10.3-25.8-2.5-54.8-12.7-83.3-28.5-21-11.6-41.5-26.6-59.7-44-12.7-12.1-24.5-25.5-34.8-39.8-5.3-7.3-10.2-14.8-14.8-22.5-5-8.3-9.5-16.8-13.8-25.5-8.8-17.7-16-36-21.5-55-10.8-37.5-15-77.3-12.3-117.8 1.4-20 4.2-39.7 8.3-59 4-19 9.3-37.5 15.8-55.3 12.8-35 30-67 50.8-95 2.5-3.3 5-6.6 7.8-9.8 2.8-3.2 5.6-6.3 8.5-9.3 6-6 12.3-11.8 18.8-17.2 13.2-10.8 27.2-20.2 42-28 15.2-8 31-14.5 47.3-19.5 33-10.2 68-15.3 104-15.3 35.5 0 70.5 5 103 14.8 16 4.8 31.7 10.8 46.5 18 14.6 7.2 28.5 15.6 41.5 25 25.2 18.3 47.5 40.8 65.5 66.5 17.5 25 31.2 52.8 40.5 82.5 4.5 14.5 8 29.5 10 44.8 2.2 15 3.3 30.5 3.3 46 0 31.5-4.8 62.5-14 92.5-9.2 29.5-22.5 57.5-39.5 82.8-16.7 25-37.2 47.5-60.5 66.5-11.8 9.5-24 18.2-36.8 25.8-12.8 7.6-26.2 14.3-40 20-27.5 11.3-56.5 19-86.5 23-15 2-30.3 3-45.7 3-15 0-30.3-1-45.3-3-29.5-4-58.2-11.5-85-22.3-13.3-5.4-26.3-11.7-38.8-18.8-12.4-7.2-24.3-15-35.7-23.7C55 410.6 35.5 388.5 20.3 363.3 5 338 0 310.5 0 282c0-28 5-55.5 19.5-80.5 14.3-24.8 33.3-47.3 55.7-66 11-9.3 22.8-17.7 35.3-25 12.3-7.2 25.3-13.5 38.8-18.8 26.8-10.7 55.5-18.2 84.8-22.3 14.6-2 29.5-3 44.5-3 15.2 0 30.3 1 45.3 3 29.3 4 58 11.7 84.8 22.5 13.5 5.4 26.5 11.7 39 19 12.5 7.3 24.5 15.3 36 24 22.5 17 41.8 37 57 59.8C496 220 504.6 248.3 504.6 278c0 14.7-1.3 29-3.7 43.3-2.5 14.3-6.2 28.3-11 41.8-4.7 13.5-10.6 26.6-17.5 39-6.8 12.3-14.8 24-23.7 35-17.7 21.6-38.6 40-62.2 54.4-11.6 7.2-23.8 13.6-36.5 19-12.7 5.4-25.8 9.8-39.3 13.3-26.7 6.8-54.6 10-83.3 10-28.5 0-56.5-3.2-83-9.8-13.3-3.3-26.3-7.7-39-13-12.6-5.4-24.8-11.8-36.5-19-23.5-14.4-44.5-32.8-62-54.4-8.8-11-16.8-22.7-23.7-35-6.8-12.4-12.7-25.5-17.5-39-4.8-13.5-8.5-27.5-11-41.8C2 307.2.8 293.2.8 278.4"/>
-      <path class="wing" d="M125.7 151.7c47.8-28.5 110.8-40.4 175-30.8 16 .6 31 6.8 45 13.8 26.8 13.3 47 38.3 64.7 60 17 20.8 35 48.7 55 67-6-15-18.7-25.5-30.6-34.6-23-17.7-49-31.5-75.7-43-16.7-7.2-34-12.8-51.4-16.4-15-3-30.2-4.5-45.4-4.5-5.2 0-10.4.3-15.6.7-14.2 1.3-28 4.2-41.2 8.6-28.4 9.5-53.7 25.3-75.6 45-20.7 18.6-38 41.5-51 66.8-6 11.5-11 23.5-15 36-.8-21.7 5-41.5 14-60 12-24.8 29.5-46.7 49-65 31.8-30.2 73-51.8 116.8-62 13-3 26.5-4.8 40-5 13.5-.2 27.2 1 40.6 3.6 22 4.3 42.5 13 61.4 24.4 18.8 11.2 35.8 25.3 50.8 41.4-4.7-14.5-14-25.8-24.3-34.8-19-16.7-41-29-63.5-39.4-16.4-7.6-33.5-13.5-51-17.5-16.2-3.7-32.8-5.7-49.4-5.7-16.5 0-33.2 2-49.4 5.7-24 5.6-47 15.2-68 28.5-21 13.4-39.6 30-55 49.3-13.3 16.6-24 35-31.8 55-.4-12.3 2-23.7 6.4-34 9.2-22.3 24.3-41.7 42.5-57.8 21.6-19.3 48.2-33 76.5-41.3 12.3-3.6 25-6 38-7.3 13-1.3 26.2-1.3 39.3-.2 22.8 2 44.5 9 64.3 19 19.3 9.8 37 22.5 52.3 37.4z"/>
-    </svg>
-  </div>
-  
-  <div class="dove-wrapper dove-2">
-    <svg viewBox="0 0 512 512" fill="#ffffff" xmlns="http://www.w3.org/2000/svg">
-      <path d="M438.6 278.6c-24.3-8.8-54-15.6-86.4-18.7-27-2.6-50.6-2.6-69.5-.7-6.2.6-11.8 1.5-16.7 2.6-11 2.3-18.9 5.2-24 8.2-16.6 9.8-19.4 25.5-19.4 25.5-1.5 5.5-10.4 20.3-25.5 35-15.7 15.3-33.8 28.5-51 38.6-23.7 13.9-45 20.6-59.5 23-14.7 2.4-25.2.9-30-.5-7.5-2.2-12.7-6.2-15-8.5-2.2-2.3-4.1-5.5-5-9.3-1.4-5.6-.3-12.5 3.3-19.8 4.6-9.3 12.3-19 22.3-27.8 18.2-16 43.5-29.3 69.8-37 32-9.4 66.8-11.3 98.4-5.2 24.3 4.7 46 13.3 64 25 15.6 10.1 28.5 22.3 38.3 35.8 8.8 12.1 14.5 25.3 17.5 38.8 2.2 9.8 2.5 19.8.9 29.8-1.5 9.4-4.8 18.4-9.8 26.5-6.5 10.6-15.5 19.3-26.5 25.4-15.8 8.8-35.3 12.3-55.8 10.3-25.8-2.5-54.8-12.7-83.3-28.5-21-11.6-41.5-26.6-59.7-44-12.7-12.1-24.5-25.5-34.8-39.8-5.3-7.3-10.2-14.8-14.8-22.5-5-8.3-9.5-16.8-13.8-25.5-8.8-17.7-16-36-21.5-55-10.8-37.5-15-77.3-12.3-117.8 1.4-20 4.2-39.7 8.3-59 4-19 9.3-37.5 15.8-55.3 12.8-35 30-67 50.8-95 2.5-3.3 5-6.6 7.8-9.8 2.8-3.2 5.6-6.3 8.5-9.3 6-6 12.3-11.8 18.8-17.2 13.2-10.8 27.2-20.2 42-28 15.2-8 31-14.5 47.3-19.5 33-10.2 68-15.3 104-15.3 35.5 0 70.5 5 103 14.8 16 4.8 31.7 10.8 46.5 18 14.6 7.2 28.5 15.6 41.5 25 25.2 18.3 47.5 40.8 65.5 66.5 17.5 25 31.2 52.8 40.5 82.5 4.5 14.5 8 29.5 10 44.8 2.2 15 3.3 30.5 3.3 46 0 31.5-4.8 62.5-14 92.5-9.2 29.5-22.5 57.5-39.5 82.8-16.7 25-37.2 47.5-60.5 66.5-11.8 9.5-24 18.2-36.8 25.8-12.8 7.6-26.2 14.3-40 20-27.5 11.3-56.5 19-86.5 23-15 2-30.3 3-45.7 3-15 0-30.3-1-45.3-3-29.5-4-58.2-11.5-85-22.3-13.3-5.4-26.3-11.7-38.8-18.8-12.4-7.2-24.3-15-35.7-23.7C55 410.6 35.5 388.5 20.3 363.3 5 338 0 310.5 0 282c0-28 5-55.5 19.5-80.5 14.3-24.8 33.3-47.3 55.7-66 11-9.3 22.8-17.7 35.3-25 12.3-7.2 25.3-13.5 38.8-18.8 26.8-10.7 55.5-18.2 84.8-22.3 14.6-2 29.5-3 44.5-3 15.2 0 30.3 1 45.3 3 29.3 4 58 11.7 84.8 22.5 13.5 5.4 26.5 11.7 39 19 12.5 7.3 24.5 15.3 36 24 22.5 17 41.8 37 57 59.8C496 220 504.6 248.3 504.6 278c0 14.7-1.3 29-3.7 43.3-2.5 14.3-6.2 28.3-11 41.8-4.7 13.5-10.6 26.6-17.5 39-6.8 12.3-14.8 24-23.7 35-17.7 21.6-38.6 40-62.2 54.4-11.6 7.2-23.8 13.6-36.5 19-12.7 5.4-25.8 9.8-39.3 13.3-26.7 6.8-54.6 10-83.3 10-28.5 0-56.5-3.2-83-9.8-13.3-3.3-26.3-7.7-39-13-12.6-5.4-24.8-11.8-36.5-19-23.5-14.4-44.5-32.8-62-54.4-8.8-11-16.8-22.7-23.7-35-6.8-12.4-12.7-25.5-17.5-39-4.8-13.5-8.5-27.5-11-41.8C2 307.2.8 293.2.8 278.4"/>
-      <path class="wing" d="M125.7 151.7c47.8-28.5 110.8-40.4 175-30.8 16 .6 31 6.8 45 13.8 26.8 13.3 47 38.3 64.7 60 17 20.8 35 48.7 55 67-6-15-18.7-25.5-30.6-34.6-23-17.7-49-31.5-75.7-43-16.7-7.2-34-12.8-51.4-16.4-15-3-30.2-4.5-45.4-4.5-5.2 0-10.4.3-15.6.7-14.2 1.3-28 4.2-41.2 8.6-28.4 9.5-53.7 25.3-75.6 45-20.7 18.6-38 41.5-51 66.8-6 11.5-11 23.5-15 36-.8-21.7 5-41.5 14-60 12-24.8 29.5-46.7 49-65 31.8-30.2 73-51.8 116.8-62 13-3 26.5-4.8 40-5 13.5-.2 27.2 1 40.6 3.6 22 4.3 42.5 13 61.4 24.4 18.8 11.2 35.8 25.3 50.8 41.4-4.7-14.5-14-25.8-24.3-34.8-19-16.7-41-29-63.5-39.4-16.4-7.6-33.5-13.5-51-17.5-16.2-3.7-32.8-5.7-49.4-5.7-16.5 0-33.2 2-49.4 5.7-24 5.6-47 15.2-68 28.5-21 13.4-39.6 30-55 49.3-13.3 16.6-24 35-31.8 55-.4-12.3 2-23.7 6.4-34 9.2-22.3 24.3-41.7 42.5-57.8 21.6-19.3 48.2-33 76.5-41.3 12.3-3.6 25-6 38-7.3 13-1.3 26.2-1.3 39.3-.2 22.8 2 44.5 9 64.3 19 19.3 9.8 37 22.5 52.3 37.4z"/>
-    </svg>
-  </div>
-</div>
 
 <section id="hero">
   <div class="hero-bg"></div>
@@ -600,12 +594,12 @@ footer{
 <section class="event-section" id="dress-code">
   <span class="section-watermark">Ոճ</span>
   <p class="section-badge reveal">Արտաքին Տեսք</p>
-  <h2 class="section-title reveal">Դրես Կոդ</h2>
+  <h2 class="section-title reveal delay-1">Դրես Կոդ</h2>
   
-  <div class="gold-rule reveal"><span class="gold-rule-icon">✦</span></div>
-  <p class="section-desc reveal">Խնդրում ենք պահպանել երեկոյան նրբաճաշակ ոճը ներքոհիշյալ գունային երանգների մեջ։</p>
+  <div class="gold-rule reveal delay-2"><span class="gold-rule-icon">✦</span></div>
+  <p class="section-desc reveal delay-3">Խնդրում ենք պահպանել երեկոյան նրբաճաշակ ոճը ներքոհիշյալ գունային երանգների մեջ։</p>
   
-  <div class="colors-wrap reveal">
+  <div class="colors-wrap reveal delay-4">
     <div class="color-swatch" style="background: #2e1f1a;" title="Մուգ Շագանակագույն/Սև"></div>
     <div class="color-swatch" style="background: #a85f58;" title="Խորը Վարդագույն"></div>
     <div class="color-swatch" style="background: #e8c4b4;" title="Բաց Երանգ"></div>
@@ -618,9 +612,9 @@ footer{
 <section class="event-section" id="calendar">
   <span class="section-watermark">Օր</span>
   <p class="section-badge reveal">Հիշարժան Օր</p>
-  <h2 class="section-title reveal">Օրացույց</h2>
+  <h2 class="section-title reveal delay-1">Օրացույց</h2>
   
-  <div class="calendar-wrap reveal">
+  <div class="calendar-wrap reveal delay-2">
     <div class="cal-month">Դեկտեմբեր 2026</div>
     <div class="cal-grid">
       <div class="cal-day-name">Երկ</div>
@@ -670,70 +664,70 @@ footer{
 <section class="event-section" id="girls-house">
   <span class="section-watermark">Հարս</span>
   <p class="section-badge reveal">Քայլ Առաջին</p>
-  <h2 class="section-title reveal">Հարսի Տուն</h2>
-  <p class="section-time reveal">12:00</p>
+  <h2 class="section-title reveal delay-1">Հարսի Տուն</h2>
+  <p class="section-time reveal delay-2">12:00</p>
 
-  <div class="illus-wrap reveal">
+  <div class="illus-wrap reveal delay-3">
     <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=800&q=80" alt="Bride details placeholder">
   </div>
 
-  <div class="gold-rule reveal"><span class="gold-rule-icon">✦</span></div>
-  <p class="section-desc reveal">Ուրախությամբ հրավիրում եմ Ձեզ Լուսինեի ծնողական տուն՝ մեկնարկելու այս հատուկ օրվա տոնախմբությունը:</p>
+  <div class="gold-rule reveal delay-4"><span class="gold-rule-icon">✦</span></div>
+  <p class="section-desc reveal delay-4">Ուրախությամբ հրավիրում եմ Ձեզ Լուսինեի ծնողական տուն՝ մեկնարկելու այս հատուկ օրվա տոնախմբությունը:</p>
 </section>
 
 
 <section class="event-section" id="church">
   <span class="section-watermark">Եկ</span>
   <p class="section-badge reveal">Քայլ Երկրորդ</p>
-  <h2 class="section-title reveal">Սուրբ Սարգիս Եկեղեցի</h2>
-  <p class="section-time reveal">14:00</p>
+  <h2 class="section-title reveal delay-1">Սուրբ Սարգիս Եկեղեցի</h2>
+  <p class="section-time reveal delay-2">14:00</p>
 
-  <div class="illus-wrap reveal">
+  <div class="illus-wrap reveal delay-3">
     <img src="https://images.unsplash.com/photo-1548625361-ecacbd75f6e8?w=800&q=80" alt="Beautiful church placeholder">
   </div>
 
-  <div class="gold-rule reveal"><span class="gold-rule-icon">✦</span></div>
-  <p class="section-desc reveal">Սուրբ Պատարագ և Պսակ կատարվելու են Սուրբ Սարգիս եկեղեցում։ Հրավիրում ենք Ձեզ կիսելու այս սուրբ պահը:</p>
+  <div class="gold-rule reveal delay-4"><span class="gold-rule-icon">✦</span></div>
+  <p class="section-desc reveal delay-4">Սուրբ Պատարագ և Պսակ կատարվելու են Սուրբ Սարգիս եկեղեցում։ Հրավիրում ենք Ձեզ կիսելու այս սուրբ պահը:</p>
 </section>
 
 
 <section class="event-section" id="boys-house">
   <span class="section-watermark">Փեսա</span>
   <p class="section-badge reveal">Քայլ Երրորդ</p>
-  <h2 class="section-title reveal">Փեսացուի Տուն</h2>
-  <p class="section-time reveal">16:00</p>
+  <h2 class="section-title reveal delay-1">Փեսացուի Տուն</h2>
+  <p class="section-time reveal delay-2">16:00</p>
 
-  <div class="illus-wrap reveal">
+  <div class="illus-wrap reveal delay-3">
     <img src="https://images.unsplash.com/photo-1509017174183-0b7e0278f1ec?w=800&q=80" alt="Groom celebration placeholder">
   </div>
 
-  <div class="gold-rule reveal"><span class="gold-rule-icon">✦</span></div>
-  <p class="section-desc reveal">Հարսի հետ միասին կգնանք Պիտերի ծնողական տուն` ծնողների հայրական օրհնությունը ստանալու:</p>
+  <div class="gold-rule reveal delay-4"><span class="gold-rule-icon">✦</span></div>
+  <p class="section-desc reveal delay-4">Հարսի հետ միասին կգնանք Պիտերի ծնողական տուն` ծնողների հայրական օրհնությունը ստանալու:</p>
 </section>
 
 
 <section class="event-section" id="restaurant">
   <span class="section-watermark">Ընթրիք</span>
   <p class="section-badge reveal">Ավարտ</p>
-  <h2 class="section-title reveal">Ռեստորան «Rhodens»</h2>
-  <p class="section-time reveal">18:00</p>
+  <h2 class="section-title reveal delay-1">Ռեստորան «Rhodens»</h2>
+  <p class="section-time reveal delay-2">18:00</p>
 
-  <div class="illus-wrap reveal">
+  <div class="illus-wrap reveal delay-3">
     <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80" alt="Elegant restaurant reception">
   </div>
 
-  <div class="gold-rule reveal"><span class="gold-rule-icon">✦</span></div>
-  <p class="section-desc reveal">Ճաշկերույթը կանցկացվի «Rhodens» ռեստորանում: Ուրախ կլինենք Ձեզ այնտեղ տեսնել ու կիսել այս անմոռանալի պահերը:</p>
+  <div class="gold-rule reveal delay-4"><span class="gold-rule-icon">✦</span></div>
+  <p class="section-desc reveal delay-4">Ճաշկերույթը կանցկացվի «Rhodens» ռեստորանում: Ուրախ կլինենք Ձեզ այնտեղ տեսնել ու կիսել այս անմոռանալի պահերը:</p>
 </section>
 
 
 <section id="rsvp">
   <div class="rsvp-inner">
-    <p class="rsvp-eyebrow">Հաստատել Ներկայությունը</p>
-    <h2 class="rsvp-title">Կգա՞ք</h2>
-    <p class="rsvp-sub">Խնդրում ենք հայտնել Ձեր մասնակցության մասին <strong>01.11.2026</strong>-ից առաջ</p>
+    <p class="rsvp-eyebrow reveal">Հաստատել Ներկայությունը</p>
+    <h2 class="rsvp-title reveal delay-1">Կգա՞ք</h2>
+    <p class="rsvp-sub reveal delay-2">Խնդրում ենք հայտնել Ձեր մասնակցության մասին <strong>01.11.2026</strong>-ից առաջ</p>
 
-    <div class="rsvp-card">
+    <div class="rsvp-card reveal delay-3">
       <div class="form-group">
         <label class="field-label" for="gname">Ձեր Անունը *</label>
         <input type="text" id="gname" class="field-input" placeholder="Անուն Ազգանուն" autocomplete="off"/>
@@ -773,6 +767,51 @@ footer{
 
 
 <script>
+/* ── ROSE PETAL ANIMATION (ON LOAD) ── */
+window.addEventListener('load', () => {
+  const container = document.createElement('div');
+  container.id = 'petals-container';
+  document.body.appendChild(container);
+
+  const colors = ['var(--rose)', 'var(--blush)', 'var(--deeprose)'];
+  const petalCount = 35; // Number of petals falling
+
+  for(let i = 0; i < petalCount; i++) {
+    let petal = document.createElement('div');
+    petal.className = 'petal';
+    
+    // Randomize starting X position
+    petal.style.left = Math.random() * 100 + 'vw';
+    
+    // Randomize speed and delay
+    let duration = Math.random() * 4 + 4; // 4 to 8 seconds
+    let delay = Math.random() * 2; // 0 to 2 seconds start delay
+    petal.style.animationDuration = duration + 's';
+    petal.style.animationDelay = delay + 's';
+    
+    // Randomize ending X offset and rotation
+    let endX = (Math.random() - 0.5) * 300 + 'px';
+    let endRot = Math.random() * 720 + 'deg';
+    petal.style.setProperty('--end-x', endX);
+    petal.style.setProperty('--end-rot', endRot);
+    
+    // Randomize colors
+    petal.style.background = colors[Math.floor(Math.random() * colors.length)];
+    
+    // Randomize sizes slightly
+    let size = Math.random() * 12 + 10;
+    petal.style.width = size + 'px';
+    petal.style.height = size + 'px';
+    
+    container.appendChild(petal);
+  }
+
+  // Remove the container completely after 10 seconds so it doesn't block clicks
+  setTimeout(() => {
+    container.remove();
+  }, 10000); 
+});
+
 /* ── COUNTDOWN ── */
 (function tick(){
   const target = new Date('2026-12-12T12:00:00');
@@ -793,18 +832,15 @@ footer{
   setTimeout(tick, 1000);
 })();
 
-/* ── PIGEONS CLEANUP (Removes them from DOM so they don't block interaction) ── */
-window.addEventListener('load', () => {
-  setTimeout(() => {
-    const layer = document.getElementById('pigeon-layer');
-    if(layer) layer.remove();
-  }, 10000); // Clean up after 10 seconds 
-});
-
 /* ── SCROLL REVEAL ── */
 const revealObs = new IntersectionObserver(entries => {
-  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('vis'); revealObs.unobserve(e.target); }});
-}, { threshold: 0.12 });
+  entries.forEach(e => { 
+    if(e.isIntersecting){ 
+      e.target.classList.add('vis'); 
+      revealObs.unobserve(e.target); 
+    }
+  });
+}, { threshold: 0.15 });
 document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 
 
